@@ -1,0 +1,57 @@
+.header-container {
+  .options {
+    display: inline-flex;
+    width: 100%;
+    height: 30px;
+    align-items: center;
+    background: #000000;
+    border-radius: 4px;
+  }
+
+  .header-section {
+    color: #C8BFBF;
+    text-align: center;
+    font-size: 18px;
+    width: 100%;
+    cursor: pointer;
+
+    &.selected, &:hover{
+      color: #FFFF;
+      box-shadow: 0 0 0 1px red;
+      border-radius: 4px;
+    }
+
+    &:focus {
+      @extend .selected;
+        outline: none;
+        box-shadow: 0 0 0 1px #C8BFBF;
+    }
+  }
+
+ .selection-indicator {
+    transition: all 0.3s ease-in-out;
+    position: relative;
+    width: 120px;
+    height: 4px;
+      .view {
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: 100%;
+        bottom: -100%;
+        background: #DD1C10;
+        transform: matrix(1, 0, 0, -1, 0, 0);
+
+        // animation-name: glow-anim;
+        // animation-duration: 4s;
+        // animation-iteration-count: infinite;
+        // animation-timing-function: ease-in-out;
+      }
+    }
+
+  @keyframes glow-anim {
+    from {background-color:#DD1C10; }
+    to {background-color: #f36459;}
+  }
+
+}

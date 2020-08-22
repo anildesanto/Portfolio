@@ -1,1 +1,110 @@
-/* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/css2?family=Monoton&family=Montez&family=Montserrat:wght@400;700&display=swap";
+
+html {
+  position: absolute;
+}
+html, body {
+  height: 100%;
+  width: 100%; }
+
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  background-color: #1D1C1C;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.container {
+  position: absolute;
+  display: block;
+  padding-right: 16px;
+  padding-left: 16px;
+  width: 50%;
+
+  left: calc(50% - 50%/2 - 2.5px);
+  top: calc(50% - 30px/2 - 269px);
+  // margin: auto;
+  // margin: 0, auto;
+
+  // top: 50%;
+  // -ms-transform: translateY(-50%) translateX(50%);
+  // transform: translateY(-50%) translateX(50%);
+}
+.background {
+  position: fixed;
+  font-family: 'Monoton', cursive;
+  margin: auto;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20vw;
+  letter-spacing: 0.08em;
+
+  color: rgba(89, 84, 84, 0.05);
+  height: 100%;
+  width: 100%;
+}
+
+.footer {
+  position: fixed;
+  left: 1.68%;
+  right: 78.99%;
+  top: 87.74%;
+  bottom: 2.18%;
+  width: fit-content;
+  :nth-child(1) {
+
+    font-family: 'Montez', cursive;
+    font-size: 32px;
+    line-height: 42px;
+
+    /* PrimaryAccent */
+
+    color: #CBC3C3;
+  }
+  :nth-child(2) {
+    font-size: 16px;
+    line-height: 20px;
+    /* SecondaryAccent */
+
+    color: #DD1C10;
+  }
+  :nth-child(3) {
+    font-size: 12px;
+    line-height: 15px;
+    /* SecondaryText */
+
+    color: #C8BFBF;
+  }
+}
+
+.content {
+  height: 520px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.card {
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 40px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
