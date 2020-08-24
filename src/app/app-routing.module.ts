@@ -4,29 +4,50 @@ import { AboutComponent } from './components/pages/about/about.component';
 import { ArtworksComponent } from './components/pages/artworks/artworks.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { ProjectsComponent } from './components/pages/projects/projects.component';
+import { MainComponent } from './components/reusable/main/main.component';
+import { ProjectDetailsComponent } from './components/reusable/project-details/project-details.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/about',
+    redirectTo: '/info',
     pathMatch: 'full'
   },
   {
-    path: 'about',
-    component: AboutComponent
+    path: 'info',
+    component: MainComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'about',
+        pathMatch: 'full'
+      },
+      {
+      path: 'about',
+      component: AboutComponent
+      },
+      {
+        path: 'projects',
+        component: ProjectsComponent
+      },
+      {
+        path: 'artworks',
+        component: ArtworksComponent
+      },
+      {
+        path: 'contact',
+        component: ContactComponent
+      }
+    ]
   },
   {
-    path: 'projects',
-    component: ProjectsComponent
+    path: 'project-details/:id',
+    component: ProjectDetailsComponent
   },
   {
-    path: 'artworks',
-    component: ArtworksComponent
-  },
-  {
-    path: 'contact',
-    component: ContactComponent
+    path: '**',
+    redirectTo: '/info/about'
   }
 ];
 

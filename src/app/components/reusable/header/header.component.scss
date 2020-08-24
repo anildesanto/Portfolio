@@ -1,33 +1,35 @@
+@import "src/app//styles/variables.scss";
+
+
 .header-container {
+  width: 100%;
+  margin: auto;
   .options {
-    display: inline-flex;
+    display: flex;
     width: 100%;
     height: 30px;
     align-items: center;
-    background: #000000;
+    background: $primaryDark;
     border-radius: 4px;
   }
 
   .header-section {
-    color: #C8BFBF;
     text-align: center;
-    font-size: 18px;
     width: 100%;
     cursor: pointer;
 
     &.selected, &:hover{
-      color: #FFFF;
-      box-shadow: 0 0 0 1px red;
+      color: $primaryTextAccent;
+      box-shadow: 0 0 0 1px $primaryAccent;
       border-radius: 4px;
     }
 
     &:focus {
       @extend .selected;
         outline: none;
-        box-shadow: 0 0 0 1px #C8BFBF;
+        box-shadow: 0 0 0 1px $primaryText;
     }
   }
-
  .selection-indicator {
     transition: all 0.3s ease-in-out;
     position: relative;
@@ -39,19 +41,28 @@
         right: 0%;
         top: 100%;
         bottom: -100%;
-        background: #DD1C10;
+        background: $primaryAccent;
         transform: matrix(1, 0, 0, -1, 0, 0);
 
-        // animation-name: glow-anim;
-        // animation-duration: 4s;
-        // animation-iteration-count: infinite;
-        // animation-timing-function: ease-in-out;
+        animation-name: glow-anim;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
       }
     }
-
-  @keyframes glow-anim {
-    from {background-color:#DD1C10; }
-    to {background-color: #f36459;}
-  }
-
 }
+
+@media screen and (max-width: 768px) {
+  .header-container {
+    width: 100%;
+    .header-section {
+      font-size: $medium-spacing;
+    }
+  }
+}
+
+// animations
+ @keyframes glow-anim {
+    from {background-color:$primaryAccent; }
+    to {background-color: $secondaryAccent;}
+  }

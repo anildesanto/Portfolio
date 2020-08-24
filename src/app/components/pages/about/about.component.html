@@ -1,4 +1,14 @@
-<div class="content" role="main">
- <div class="card">about works!</div>
+<div>
+ <div class="card">{{profileText}}</div>
+ <div class="divider large"></div>
+ <div>Experience and Education : <a target="_blank" [href]="experienceLink">{{experienceLink}}</a></div>
+ <div class="divider large"></div>
+ <div class="languages">
+   <div *ngFor="let language of languages">
+      <div  class="language"><img src="../../../../assets/speech-bubble.svg"/> <span>{{language.title}}</span><span class="divider">-</span><span>{{language.level}}</span></div>
+      <div class="divider small"></div>
+    </div>
+ </div>
+
 </div>
 

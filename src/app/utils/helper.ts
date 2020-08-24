@@ -1,7 +1,7 @@
 export class Helper {
   title = 'portfolio';
   name = 'Anilde Santo';
-  occupation = 'Software developer';
-  base = 'Nottingham, UK';
+  occupation = 'Software Engineer';
+  base = 'Milton Keynes, UK';
   intro = `${this.name}, ${this.occupation}  based in ${this.base}`;
 }

@@ -1,0 +1,19 @@
+@import "src/app//styles/variables.scss";
+
+.languages {
+  display: grid;
+}
+.language {
+  display: inline-flex;
+  img {
+    margin-right: $medium-spacing;
+  }
+  .divider {
+    margin-right: $small-spacing;
+    margin-right: $small-spacing;
+  }
+}
+
+.content {
+  width: 50%;
+}

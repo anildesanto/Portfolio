@@ -4,4 +4,6 @@ export class Section {
   title: string;
   segment: string;
   element: HTMLElement;
+  width: string;
+  height: string;
 }

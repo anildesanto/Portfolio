@@ -1,17 +1,26 @@
 
 <!-- Toolbar -->
 <div class="main">
-  <div class="background">Anilde Santo</div>
+  <div class="background">
+    <span>Anilde</span>
+    <span>Santo</span>
+  </div>
 
-  <div class="container">
-    <app-header></app-header>
+  <div id="container" class="container">
     <router-outlet></router-outlet>
     <!-- <app-about></app-about> -->
   </div>
 
   <div class="footer">
-    <div>{{helper.name}}</div>
-    <div>{{helper.occupation}}</div>
-    <div>{{helper.base}}</div>
+    <div class="info">
+      <div>{{helper.name}}</div>
+      <div>{{helper.occupation}}</div>
+      <div>{{helper.base}}</div>
+    </div>
+<!--
+    <div class="Character">
+      <img class="Character_shadow pixelart" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacterShadow.png" alt="Shadow" />
+      <img class="Character_spritesheet pixelart face-down" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/21542/DemoRpgCharacter.png" alt="Character" />
+   </div> -->
   </div>
 </div>

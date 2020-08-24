@@ -1,4 +1,5 @@
 @import "https://fonts.googleapis.com/css2?family=Monoton&family=Montez&family=Montserrat:wght@400;700&display=swap";
+@import "./app/styles/variables.scss";
 
 html {
   position: absolute;
@@ -9,7 +10,7 @@ html, body {
 
 
 body {
-  margin: 0;
+  margin: $small-spacing;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -17,94 +18,320 @@ body {
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
+  color: $primaryText;
+  font-size: 18px;
 }
 
 .main {
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
 }
 .container {
-  position: absolute;
+  transition: all 0.3s ease-in-out;
+  position: relative;
   display: block;
-  padding-right: 16px;
-  padding-left: 16px;
   width: 50%;
 
-  left: calc(50% - 50%/2 - 2.5px);
-  top: calc(50% - 30px/2 - 269px);
-  // margin: auto;
-  // margin: 0, auto;
-
-  // top: 50%;
-  // -ms-transform: translateY(-50%) translateX(50%);
-  // transform: translateY(-50%) translateX(50%);
+  top: 50%;
+  margin: auto;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 .background {
+  display: grid;
   position: fixed;
   font-family: 'Monoton', cursive;
   margin: auto;
 
   font-style: normal;
   font-weight: normal;
-  font-size: 20vw;
+  font-size: 18vw;
   letter-spacing: 0.08em;
 
   color: rgba(89, 84, 84, 0.05);
   height: 100%;
   width: 100%;
+
+  * {
+    position: relative;
+    animation: moveRight 60s infinite alternate-reverse;
+  }
+
+  :nth-child(2) {
+    animation-name: moveLeft;
+  }
 }
 
 .footer {
   position: fixed;
-  left: 1.68%;
-  right: 78.99%;
-  top: 87.74%;
-  bottom: 2.18%;
+  left: 4%;
+  bottom: 4%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
-  :nth-child(1) {
-
-    font-family: 'Montez', cursive;
-    font-size: 32px;
-    line-height: 42px;
-
-    /* PrimaryAccent */
-
-    color: #CBC3C3;
+  .info {
+    :nth-child(1) {
+      font-family: 'Montez', cursive;
+      font-size: $large-spacing;
+      line-height: 42px;
+      color: $secondaryTextAccent;
+    }
+    :nth-child(2) {
+      font-size: $medium-spacing;
+      line-height: 20px;
+      color: $primaryAccent;
+    }
+    :nth-child(3) {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
-  :nth-child(2) {
-    font-size: 16px;
-    line-height: 20px;
-    /* SecondaryAccent */
 
-    color: #DD1C10;
-  }
-  :nth-child(3) {
-    font-size: 12px;
-    line-height: 15px;
-    /* SecondaryText */
-
-    color: #C8BFBF;
-  }
 }
 
 .content {
-  height: 520px;
-  padding: 16px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid #000000;
+  height: 650px;
+  padding: $large-spacing;
+  background: $primaryCard;
+  border: 1px solid $primaryDark;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 4px 4px $primaryCard;
   border-radius: 4px;
+  overflow: hidden auto;
+
+  width: 100%;
+  margin: auto;
+
+  &.small {
+     width: 50%;
+  }
+
+  &::-webkit-scrollbar {
+    width: $small-spacing;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 4px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: $primaryAccent;
+    border-radius: 4px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: $secondaryAccent;
+  }
 }
 
-.card {
-  border-radius: 4px;
-  border: 1px solid #eee;
-  background-color: #fafafa;
-  height: 40px;
-  margin: 0 8px 16px;
-  padding: 16px;
-  transition: all 0.2s ease-in-out;
-  line-height: 24px;
+.grid-layout {
+  display: grid;
+  grid-gap: $medium-spacing;
+  grid-template-columns: auto auto auto;
+
+  &.two {
+    grid-template-columns: auto auto;
+  }
 }
+
+
+.divider {
+  &.small {
+    margin-top: $small-spacing;
+  }
+  &.medium {
+    margin-top: $medium-spacing;
+  }
+  &.large {
+    margin-top: $large-spacing;
+  }
+  &.extra-large {
+    margin-top: $extra-large-spacing
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction:row;
+}
+
+.column {
+  flex: 1 1 0px;
+}
+
+.highlight {
+  color: $primaryAccent;
+}
+
+// character
+:root {
+  --pixel-size: 1;
+  --character-size: 32px;
+  --character-sprites: 4;
+}
+
+.Character {
+  width: calc(var(--character-size) * var(--pixel-size));
+  height: calc(var(--character-size) * var(--pixel-size));
+  overflow: hidden;
+  position: relative;
+  margin: 4em auto;
+}
+
+.Character_spritesheet {
+  animation: moveSpritesheet 1s steps(var(--character-sprites)) infinite;
+  width: calc(var(--character-size) * var(--character-sprites) * var(--pixel-size));
+  position: absolute;
+
+}
+.Character_shadow {
+  position: absolute;
+  width: calc(var(--character-size) * var(--pixel-size));
+  height: calc(var(--character-size) * var(--pixel-size));
+}
+
+.pixelart {
+  image-rendering: pixelated;
+}
+
+.face-right {
+  top: calc(-var(--character-size) * var(--pixel-size));
+}
+.face-up {
+  top: calc(-(var(--character-size)*2) * var(--pixel-size));
+}
+.face-left {
+  top: calc(-(var(--character-size)*3) * var(--pixel-size));
+}
+
+// media queries
+@media screen and (max-width: 1024px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .background {
+    font-size: 44vw;
+  }
+  .container {
+    width: 100%;
+    height: 75%;
+    top: 0%;
+    transform: none;
+    -ms-transform: none;
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .content {
+    height: 100%;
+  }
+  body {
+    margin: 0;
+  }
+
+  .grid-layout {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .column {
+    &:first-child {
+      flex: 0 0 0px;
+    }
+  }
+  .content {
+    width: 100%;
+  }
+
+  .grid-layout {
+    grid-template-columns: auto;
+  }
+
+  .container {
+    height: 90%;
+  }
+  .footer {
+    height: 5%;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+
+    .info {
+      background-color: rgba(100, 100, 100, 0.5);
+      box-shadow: 0px 4px 4px #000000;
+      padding: 4px;
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
+      margin: auto;
+
+      :nth-child(1) {
+        font-family: "Montez", cursive;
+        font-size: 18px;
+        line-height: 0px;
+        color: #FFFF;
+        &:after {
+          content: ' | ';
+        }
+
+      :nth-child(2) {
+        font-size: 12px;
+        color: #DD1C10;
+        font-weight: 900;
+        &:before, &:after {
+          content: ' | ';
+        }
+      }
+
+      :nth-child(3) {
+        font-size: 8px;
+        line-height: 0px;
+        color: #ffff;
+        &:before {
+          content: ' | ';
+        }
+      }
+    }
+  }
+}
+
+
+
+// animations
+@keyframes moveSpritesheet {
+  from {
+     transform: translate3d(0px,0,0)
+  }
+  to {
+     transform: translate3d(-100%,0,0)
+  }
+}
+
+@keyframes moveRight {
+  from {right: 0px;}
+  to {right: 200px;}
+}
+
+@keyframes moveLeft {
+  from {left: 0px;}
+  to {left: 200px;}
+}
+
+
+// .card {
+//   border-radius: 4px;
+//   border: 1px solid #eee;
+//   background-color: #fafafa;
+//   height: 40px;
+//   margin: 0 8px $medium-spacing;
+//   padding: $medium-spacing;
+//   transition: all 0.2s ease-in-out;
+//   line-height: 24px;
+// }

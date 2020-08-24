@@ -13,6 +13,10 @@ import { OncreateDirective } from './directives/oncreate.directive';
 import { ProjectsComponent } from './components/pages/projects/projects.component';
 import { ArtworksComponent } from './components/pages/artworks/artworks.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
+import { ProjectComponent } from './components/reusable/project/project.component';
+import { ArtworkComponent } from './components/reusable/artwork/artwork.component';
+import { MainComponent } from './components/reusable/main/main.component';
+import { ProjectDetailsComponent } from './components/reusable/project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { ContactComponent } from './components/pages/contact/contact.component';
     OncreateDirective,
     ProjectsComponent,
     ArtworksComponent,
-    ContactComponent
+    ContactComponent,
+    ProjectComponent,
+    ArtworkComponent,
+    MainComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     BrowserModule,

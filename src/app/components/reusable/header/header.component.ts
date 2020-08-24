@@ -19,10 +19,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription = new Subscription();
 
   public sections: Array<Section> = [
-    {index: null, element: null, selected: false, title: 'About',  segment: '/about'},
-    {index: null, element: null, selected: false, title: 'Projects',  segment: '/projects'},
-    {index: null, element: null, selected: false, title: 'Artworks',  segment: '/artworks'},
-    {index: null, element: null, selected: false, title: 'Contact',  segment: '/contact'},
+    {index: null, element: null, selected: false, title: 'About',  segment: '/info/about', width: '40%', height: '650px'},
+    {index: null, element: null, selected: false, title: 'Projects',  segment: '/info/projects', width: '65%', height: '650px'},
+    {index: null, element: null, selected: false, title: 'Artworks',  segment: '/info/artworks', width: '50%', height: '650px'},
+    {index: null, element: null, selected: false, title: 'Contact',  segment: '/info/contact', width: '50%', height: '650px'},
   ];
 
   constructor(private router: Router) { }
@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     const routerSub = this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
+        console.log(event.url);
         const foundSection: Section = this.sections.find(sect => sect.segment === event.url);
         this.currentSection = foundSection || this.sections[0];
 
@@ -66,11 +67,27 @@ export class HeaderComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const sectionWidth = this.currentSection.element.getBoundingClientRect().width;
-    const indicatorPosition = this.currentSection.index * sectionWidth;
-    const indicator: HTMLElement = this.indicatorRef.nativeElement;
-    indicator.style.width =  `${sectionWidth}${this.pixelsSuffix}`;
-    indicator.style.left =  `${indicatorPosition}${this.pixelsSuffix}`;
+    document.getElementById('content').scrollTop = 0;
+
+    if (window.innerWidth > 1024) {
+      document.getElementById('container').style.width = this.currentSection.width;
+      document.getElementById('content').style.height = this.currentSection.height;
+    } else {
+      document.getElementById('container').style.width = '95%';
+
+      if (window.innerWidth < 481) {
+        document.getElementById('content').style.height = '100%';
+      }
+    }
+
+    setTimeout(() => {
+      const sectionWidth = this.currentSection.element.getBoundingClientRect().width;
+      const indicatorPosition = this.currentSection.index * sectionWidth;
+      const indicator: HTMLElement = this.indicatorRef.nativeElement;
+      indicator.style.width =  `${sectionWidth}${this.pixelsSuffix}`;
+      indicator.style.left =  `${indicatorPosition}${this.pixelsSuffix}`;
+    }, 500);
+
   }
 
   private updateSelected(): void {
