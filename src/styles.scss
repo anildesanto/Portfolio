@@ -1,4 +1,3 @@
-@import "https://fonts.googleapis.com/css2?family=Monoton&family=Montez&family=Montserrat:wght@400;700&display=swap";
 @import "./app/styles/variables.scss";
 
 html {
@@ -10,7 +9,7 @@ html, body {
 
 
 body {
-  margin: $small-spacing;
+  margin: 0px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -22,6 +21,13 @@ body {
   font-size: 18px;
 }
 
+a {
+  color: $secondaryAccent;
+  &.selected, &:hover, &:focus{
+    color: $primaryAccent;
+    outline: none;
+  }
+}
 .main {
   position: absolute;
   height: 100%;
@@ -29,14 +35,16 @@ body {
 }
 .container {
   transition: all 0.3s ease-in-out;
-  position: relative;
+  position: absolute;
   display: block;
   width: 50%;
 
+  // devter vertically and horizontally
+  margin: 0;
   top: 50%;
-  margin: auto;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .background {
   display: grid;
@@ -76,6 +84,10 @@ body {
       font-size: $large-spacing;
       line-height: 42px;
       color: $secondaryTextAccent;
+      stroke: azure;
+      stroke-width: thin;
+      -webkit-text-stroke: azure;
+      -webkit-text-stroke-width: thin;
     }
     :nth-child(2) {
       font-size: $medium-spacing;
@@ -93,11 +105,12 @@ body {
 .content {
   height: 650px;
   padding: $large-spacing;
-  background: $primaryCard;
+  // background: $primaryCard;
   border: 1px solid $primaryDark;
   box-sizing: border-box;
-  box-shadow: 0px 4px 4px $primaryCard;
-  border-radius: 4px;
+  // box-shadow: 0px 4px 4px $primaryCard;
+  box-shadow: 0px 4px 32px rgb(0 1 0);
+  border-radius: 0px 0px 4px 4px;
   overflow: hidden auto;
 
   width: 100%;
@@ -138,7 +151,6 @@ body {
   }
 }
 
-
 .divider {
   &.small {
     margin-top: $small-spacing;
@@ -156,7 +168,7 @@ body {
 
 .row {
   display: flex;
-  flex-direction:row;
+  flex-direction: column;
 }
 
 .column {
@@ -210,10 +222,9 @@ body {
 
 // media queries
 @media screen and (max-width: 1024px) {
-  .row {
-    flex-direction: column;
-  }
+
 }
+
 
 @media screen and (max-width: 768px) {
   .background {
@@ -221,26 +232,36 @@ body {
   }
   .container {
     width: 100%;
-    height: 75%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    transform: none;
+    -ms-transform: none;
+  }
+
+  .content {
+    height: 100%;
+  }
+  .grid-layout {
+    grid-template-columns: auto;
+  }
+}
+
+
+
+@media screen and (max-height: 650px) {
+  .container {
+    width: 100%;
+    height: 100%;
     top: 0%;
     transform: none;
     -ms-transform: none;
     padding-right: 0px;
     padding-left: 0px;
   }
-  .content {
-    height: 100%;
-  }
-  body {
-    margin: 0;
-  }
-
-  .grid-layout {
-    grid-template-columns: auto auto;
-  }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .column {
     &:first-child {
       flex: 0 0 0px;
@@ -250,56 +271,49 @@ body {
     width: 100%;
   }
 
-  .grid-layout {
-    grid-template-columns: auto;
-  }
+  // .footer {
+  //   height: 5%;
+  //   left: 0%;
+  //   bottom: 0%;
+  //   width: 100%;
 
-  .container {
-    height: 90%;
-  }
-  .footer {
-    height: 5%;
-    left: 0%;
-    bottom: 0%;
-    width: 100%;
+  //   .info {
+  //     background-color: rgba(100, 100, 100, 0.5);
+  //     box-shadow: 0px 4px 4px #000000;
+  //     padding: 4px;
+  //     display: inline-flex;
+  //     align-items: center;
+  //     width: 100%;
+  //     margin: auto;
 
-    .info {
-      background-color: rgba(100, 100, 100, 0.5);
-      box-shadow: 0px 4px 4px #000000;
-      padding: 4px;
-      display: inline-flex;
-      align-items: center;
-      width: 100%;
-      margin: auto;
+  //     :nth-child(1) {
+  //       font-family: "Montez", cursive;
+  //       font-size: 18px;
+  //       line-height: 0px;
+  //       color: #FFFF;
+  //       &:after {
+  //         content: ' | ';
+  //       }
 
-      :nth-child(1) {
-        font-family: "Montez", cursive;
-        font-size: 18px;
-        line-height: 0px;
-        color: #FFFF;
-        &:after {
-          content: ' | ';
-        }
+  //     :nth-child(2) {
+  //       font-size: 12px;
+  //       color: #DD1C10;
+  //       font-weight: 900;
+  //       &:before, &:after {
+  //         content: ' | ';
+  //       }
+  //     }
 
-      :nth-child(2) {
-        font-size: 12px;
-        color: #DD1C10;
-        font-weight: 900;
-        &:before, &:after {
-          content: ' | ';
-        }
-      }
-
-      :nth-child(3) {
-        font-size: 8px;
-        line-height: 0px;
-        color: #ffff;
-        &:before {
-          content: ' | ';
-        }
-      }
-    }
-  }
+  //     :nth-child(3) {
+  //       font-size: 8px;
+  //       line-height: 0px;
+  //       color: #ffff;
+  //       &:before {
+  //         content: ' | ';
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 
@@ -324,7 +338,36 @@ body {
   to {left: 200px;}
 }
 
+// animations
+@keyframes glow-anim {
+  0% {background-color:$primaryAccent; }
+  50% {background-color: $secondaryAccent;}
+  100% {background-color:$primaryAccent; }
+}
 
+
+// .widget-name {
+//   &[min-width~="400px"] {
+//     h2 {
+//        font-size: 18px;
+//     }
+//   }
+
+//   &[min-width~="600px"] {
+//     h2 {
+//       padding: 55px;
+//       text-align: center;
+//       font-size: 24px;
+//     }
+//   }
+
+//   &[min-width~="700px"] {
+//     h2 {
+//       font-size: 34px;
+//       color: red;
+//     }
+//   }
+// }
 // .card {
 //   border-radius: 4px;
 //   border: 1px solid #eee;
@@ -335,3 +378,4 @@ body {
 //   transition: all 0.2s ease-in-out;
 //   line-height: 24px;
 // }
+

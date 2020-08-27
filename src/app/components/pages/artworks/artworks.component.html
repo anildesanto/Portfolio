@@ -1,6 +1,3 @@
 <div class="artwork-container">
-  <app-artwork></app-artwork>
-  <app-artwork></app-artwork>
-  <app-artwork></app-artwork>
-  <app-artwork></app-artwork>
+  <app-artwork *ngFor="let artwork of artworks" [artwork]="artwork"></app-artwork>
 </div>

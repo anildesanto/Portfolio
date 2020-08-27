@@ -1,12 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './modules/app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/reusable/header/header.component';
 import { Helper } from './utils/helper';
-import { MaterialModule } from './modules/material-module';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './components/pages/about/about.component';
 import { OncreateDirective } from './directives/oncreate.directive';
@@ -17,7 +16,15 @@ import { ProjectComponent } from './components/reusable/project/project.componen
 import { ArtworkComponent } from './components/reusable/artwork/artwork.component';
 import { MainComponent } from './components/reusable/main/main.component';
 import { ProjectDetailsComponent } from './components/reusable/project-details/project-details.component';
+import { SelectionIndicatorComponent } from './components/reusable/selection-indicator/selection-indicator.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+// import { AngularFireModule, FirebaseApp } from '@angular/fire';
+// import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+// import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,14 +37,19 @@ import { ProjectDetailsComponent } from './components/reusable/project-details/p
     ProjectComponent,
     ArtworkComponent,
     MainComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    SelectionIndicatorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+
+
   ],
   providers: [Helper],
   bootstrap: [AppComponent]

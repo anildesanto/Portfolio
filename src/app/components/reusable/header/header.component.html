@@ -2,10 +2,10 @@
   <div class="options">
     <div tabindex="0" [ngClass]="section.selected ? 'header-section selected' : 'header-section'"
     *ngFor="let section of sections; let i = index"
-    appOncreate (onCreate)= "onSectionLoad(section, i, $event)"
+    appOncreate (creation)= "onSectionLoad(section, i, $event)"
     (click)="onSectionSelect(section)"
     (keydown.enter)="onSectionSelect(section)"
     >{{section.title}}</div>
   </div>
-  <div class="selection-indicator" #indicator><div class="view" ></div></div>
+  <app-selection-indicator #indicator [target]="currentSectionElement"></app-selection-indicator>
 </div>

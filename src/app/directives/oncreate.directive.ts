@@ -4,11 +4,11 @@ import { Directive, Output, EventEmitter, OnInit, ElementRef } from '@angular/co
   selector: '[appOncreate]'
 })
 export class OncreateDirective implements OnInit {
-  @Output() onCreate: EventEmitter<ElementRef> = new EventEmitter<ElementRef>();
+  @Output() creation: EventEmitter<ElementRef> = new EventEmitter<ElementRef>();
 
   constructor(private element: ElementRef) {}
 
   ngOnInit(): void {
-    this.onCreate.emit(this.element);
+    this.creation.emit(this.element);
   }
 }

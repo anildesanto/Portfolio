@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Artwork } from 'src/app/models/artwork';
+import { PortfolioService } from 'src/app/services/portfolio.service';
 
 @Component({
   selector: 'app-artworks',
@@ -6,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artworks.component.scss']
 })
 export class ArtworksComponent implements OnInit {
-
-  constructor() { }
+  public artworks: Artwork[][];
+  constructor(private portfolioService: PortfolioService) {
+    this.portfolioService.onArtworksValueChange().subscribe((artworks) => {
+      console.log('pr', artworks);
+      this.artworks = artworks;
+    });
+  }
 
   ngOnInit() {
   }

@@ -7,49 +7,24 @@
   .options {
     display: flex;
     width: 100%;
-    height: 30px;
+    height: 40px;
     align-items: center;
     background: $primaryDark;
-    border-radius: 4px;
+    border-radius: 4px 4px 0px 0px;
   }
 
   .header-section {
     text-align: center;
     width: 100%;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 
-    &.selected, &:hover{
+    &.selected, &:hover, &:focus{
       color: $primaryTextAccent;
-      box-shadow: 0 0 0 1px $primaryAccent;
       border-radius: 4px;
-    }
-
-    &:focus {
-      @extend .selected;
-        outline: none;
-        box-shadow: 0 0 0 1px $primaryText;
+      outline: none;
     }
   }
- .selection-indicator {
-    transition: all 0.3s ease-in-out;
-    position: relative;
-    width: 120px;
-    height: 4px;
-      .view {
-        position: absolute;
-        left: 0%;
-        right: 0%;
-        top: 100%;
-        bottom: -100%;
-        background: $primaryAccent;
-        transform: matrix(1, 0, 0, -1, 0, 0);
-
-        animation-name: glow-anim;
-        animation-duration: 4s;
-        animation-iteration-count: infinite;
-        animation-timing-function: ease-in-out;
-      }
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -57,12 +32,7 @@
     width: 100%;
     .header-section {
       font-size: $medium-spacing;
+      transition: all 0.5s ease-in-out;
     }
   }
 }
-
-// animations
- @keyframes glow-anim {
-    from {background-color:$primaryAccent; }
-    to {background-color: $secondaryAccent;}
-  }

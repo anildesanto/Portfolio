@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './components/pages/about/about.component';
-import { ArtworksComponent } from './components/pages/artworks/artworks.component';
-import { ContactComponent } from './components/pages/contact/contact.component';
-import { ProjectsComponent } from './components/pages/projects/projects.component';
-import { MainComponent } from './components/reusable/main/main.component';
-import { ProjectDetailsComponent } from './components/reusable/project-details/project-details.component';
+import { AboutComponent } from '../components/pages/about/about.component';
+import { ArtworksComponent } from '../components/pages/artworks/artworks.component';
+import { ContactComponent } from '../components/pages/contact/contact.component';
+import { ProjectsComponent } from '../components/pages/projects/projects.component';
+import { MainComponent } from '../components/reusable/main/main.component';
+import { ProjectDetailsComponent } from '../components/reusable/project-details/project-details.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/info',
+    redirectTo: '/info/about',
     pathMatch: 'full'
   },
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'about',
+        redirectTo: '/about',
         pathMatch: 'full'
       },
       {

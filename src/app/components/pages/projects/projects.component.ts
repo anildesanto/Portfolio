@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from 'src/app/services/portfolio.service';
+import { Project } from 'src/app/models/project';
 
 @Component({
   selector: 'app-projects',
@@ -6,8 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
+  public projects: Project[][];
 
-  constructor() { }
+  constructor(private portfolioService: PortfolioService) {
+    this.portfolioService.onProjectsValueChange().subscribe((projects) => {
+      console.log('pr', projects);
+      this.projects = projects;
+    });
+  }
 
   ngOnInit() {
   }

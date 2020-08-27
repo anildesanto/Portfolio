@@ -1,0 +1,30 @@
+@import "src/app//styles/variables.scss";
+
+.selection-indicator {
+transition: all 0.3s ease-in-out;
+position: absolute;
+width: 120px;
+height: 4px;
+  .view {
+    position: absolute;
+    left: 1px;
+    right: 1px;
+    top: 0%;
+    bottom: 0%;
+    background: $primaryAccent;
+    transform: matrix(1, 0, 0, -1, 0, 0);
+
+    animation-name: glow-anim;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+
+// animations
+ @keyframes glow-anim {
+  0% {background-color:$primaryAccent; }
+  50% {background-color: $secondaryAccent;}
+  100% {background-color:$primaryAccent; }
+}

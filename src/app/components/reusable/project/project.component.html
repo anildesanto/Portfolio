@@ -1,15 +1,15 @@
 <div class="row">
   <div class="column">
     <div class="image-container">
-      <img src="../../../../assets/sample-project-image.png">
+      <img [src]="project.displayImage">
     </div>
   </div>
   <div class="column">
-    <span>Title</span>
+    <span>{{project.title}}</span>
     <div class="divider small"></div>
-    <span class="highlight">2007</span>
+    <span class="highlight">{{project.year}}</span>
     <div class="divider medium"></div>
-    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</span>
+    <span>{{project.description}}</span>
   </div>
 </div>
 <div class="divider medium"></div>
