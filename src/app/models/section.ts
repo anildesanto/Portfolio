@@ -6,4 +6,5 @@ export class Section {
   element: HTMLElement;
   width: string;
   height: string;
+  padding: string;
 }

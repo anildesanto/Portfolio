@@ -4,4 +4,6 @@ export class Project {
   year: string;
   images: Array<string>;
   displayImage: string;
+  exampleLink: string;
+  designLink: string;
 }

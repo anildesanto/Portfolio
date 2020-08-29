@@ -1,3 +1,53 @@
+@import "src/app//styles/variables.scss";
+
+:host {
+  height: inherit;
+  width: 100%;
+}
+.play-button {
+  height: 35px;
+  width: 35px;
+  background-color: #bbb;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &.right {
+     background-color: $secondaryAccent;
+  }
+}
 .artwork-container {
-  // display: flex;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.artwork-controller {
+  position: absolute;
+  left: 4%;
+  bottom: 8%;
+  display: grid;
+  align-items: center;
+  z-index: 1;
+
+  * {
+    margin-bottom: $small-spacing;
+  }
+  :last-child {
+    margin-bottom: 0px;
+  }
+
+  .control-buttons {
+    display: flex;
+    width: 100%;
+    * {
+      margin-right: $small-spacing;
+    }
+    :last-child {
+      margin-right: 0px;
+    }
+  }
 }

@@ -21,6 +21,13 @@ body {
   font-size: 18px;
 }
 
+.remove-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 a {
   color: $secondaryAccent;
   &.selected, &:hover, &:focus{
@@ -63,7 +70,7 @@ a {
 
   * {
     position: relative;
-    animation: moveRight 60s infinite alternate-reverse;
+    animation: moveRight 45s infinite alternate-reverse;
   }
 
   :nth-child(2) {
@@ -143,7 +150,6 @@ a {
 
 .grid-layout {
   display: grid;
-  grid-gap: $medium-spacing;
   grid-template-columns: auto auto auto;
 
   &.two {
@@ -368,14 +374,22 @@ a {
 //     }
 //   }
 // }
-// .card {
-//   border-radius: 4px;
-//   border: 1px solid #eee;
-//   background-color: #fafafa;
-//   height: 40px;
-//   margin: 0 8px $medium-spacing;
-//   padding: $medium-spacing;
-//   transition: all 0.2s ease-in-out;
-//   line-height: 24px;
-// }
+.card {
+  // border-radius: 4px;
+  // border: 1px solid #eee;
+  // background-color: #fafafa;
+  // height: 40px;
+  // margin: 0 8px $medium-spacing;
+  // padding: $medium-spacing;
+  // transition: all 0.2s ease-in-out;
+  // line-height: 24px;
+
+  background-color: $primaryCard;
+  padding: $medium-spacing;
+  border-radius: 4px;
+
+  &.secondary {
+    background-color: $secondaryCard;
+  }
+}
 

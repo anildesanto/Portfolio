@@ -1,3 +1,11 @@
-<div class="artwork-container">
+
+<div class="artwork-controller card secondary">
+  <span>{{selectedArtwork?.title}}</span>
+  <div class="control-buttons">
+    <span *ngIf="!isStart" class="play-button left" tabindex="0" (click)="move(false)" (keydown.enter)="move(false)"></span>
+    <span *ngIf="!isEnd" class="play-button right" tabindex="0" (click)="move(true)" (keydown.enter)="move(true)"></span>
+  </div>
+</div>
+<div #artcontainer class="artwork-container">
   <app-artwork *ngFor="let artwork of artworks" [artwork]="artwork"></app-artwork>
 </div>

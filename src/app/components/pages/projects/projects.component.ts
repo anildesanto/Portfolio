@@ -8,11 +8,10 @@ import { Project } from 'src/app/models/project';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  public projects: Project[][];
+  public projects: Array<Project> = new Array<Project>();
 
   constructor(private portfolioService: PortfolioService) {
     this.portfolioService.onProjectsValueChange().subscribe((projects) => {
-      console.log('pr', projects);
       this.projects = projects;
     });
   }

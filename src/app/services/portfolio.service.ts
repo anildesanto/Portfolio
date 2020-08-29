@@ -17,10 +17,17 @@ export class PortfolioService {
   }
 
   public sections: Array<Section> = [
-    {index: null, element: null, selected: false, title: 'About',  segment: '/info/about', width: '40%', height: '650px'},
-    {index: null, element: null, selected: false, title: 'Projects',  segment: '/info/projects', width: '65%', height: '650px'},
-    {index: null, element: null, selected: false, title: 'Artworks',  segment: '/info/artworks', width: '50%', height: '650px'},
-    {index: null, element: null, selected: false, title: 'Contact',  segment: '/info/contact', width: '50%', height: '650px'},
+    {index: null, element: null, selected: false, title: 'About',
+      segment: '/info/about', width: '40%', height: '650px', padding: '32px'},
+
+    {index: null, element: null, selected: false, title: 'Projects',
+      segment: '/info/projects', width: '65%', height: '650px', padding: '32px'},
+
+    {index: null, element: null, selected: false, title: 'Artworks',
+      segment: '/info/artworks', width: '60%', height: '650px', padding: '8px'},
+
+    {index: null, element: null, selected: false, title: 'Contact',
+      segment: '/info/contact', width: '40%', height: '650px', padding: '32px'},
   ];
 
   public getUser(): AngularFirestoreDocument<User> {
@@ -31,19 +38,19 @@ export class PortfolioService {
     return this.getUser().valueChanges();
   }
 
-  public getProjects(): AngularFirestoreCollection<Array<Project>> {
+  public getProjects(): AngularFirestoreCollection<Project> {
     return this.getUser().collection('projects');
   }
 
-  public onProjectsValueChange(): Observable<Project[][]> {
+  public onProjectsValueChange(): Observable<Array<Project>> {
     return this.getProjects().valueChanges();
   }
 
-  public geArtworks(): AngularFirestoreCollection<Array<Artwork>> {
+  public geArtworks(): AngularFirestoreCollection<Artwork> {
     return this.getUser().collection('artworks');
   }
 
-  public onArtworksValueChange(): Observable<Artwork[][]> {
+  public onArtworksValueChange(): Observable<Array<Artwork>> {
     return this.geArtworks().valueChanges();
   }
 }

@@ -53,6 +53,7 @@ export class MainComponent implements AfterViewInit, OnDestroy{
       return;
     }
 
+    this.content.style.padding = section.padding;
     if (window.innerWidth > this.maxWindowWidth) {
       this.container.style.width = section.width;
       this.content.style.height = section.height;
@@ -69,7 +70,7 @@ export class MainComponent implements AfterViewInit, OnDestroy{
     const screenIsSmallerAndSizeMatch = window.innerWidth <= this.maxWindowWidth
     && this.container.style.width === this.maxStyleWidth;
 
-    return  screenIsGreaterAndSizeMatch || screenIsSmallerAndSizeMatch;
+    return  (screenIsGreaterAndSizeMatch || screenIsSmallerAndSizeMatch) && this.content.style.padding === section.padding;
   }
 
   public get sections(): Array<Section> { return this.portfolioService.sections; }
