@@ -1,15 +1,16 @@
-<div class="row">
-  <div class="column">
-    <div class="image-container">
-      <img [src]="project.displayImage">
+<div class="image-container">
+  <img [src]="project.displayImage" [alt]="project.title" (click)="clickImage()" (keydown.enter)="clickImage()">
+</div>
+<div>
+  <span class="project-title">{{project.title}}</span>
+  <div class="divider small"></div>
+  <span class="highlight">{{project.year}}</span>
+  <div class="divider small"></div>
+  <div class="tools-container">
+    <div  class="tools">
+      <div class="tool-icon" *ngFor="let tool of project.tools">{{tool}}</div>
     </div>
   </div>
-  <div class="column">
-    <span>{{project.title}}</span>
-    <div class="divider small"></div>
-    <span class="highlight">{{project.year}}</span>
-    <div class="divider medium"></div>
-    <span>{{project.description}}</span>
-  </div>
+  <div class="divider medium"></div>
+  <span>{{project.description}}</span>
 </div>
-<div class="divider medium"></div>

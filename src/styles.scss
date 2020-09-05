@@ -45,13 +45,17 @@ a {
   position: absolute;
   display: block;
   width: 50%;
-
-  // devter vertically and horizontally
+  height: 70%;
+  // center vertically and horizontally
   margin: 0;
-  top: 50%;
+  top: 45%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+
+  &.wide {
+    width: 80%;
+  }
 }
 .background {
   display: grid;
@@ -110,7 +114,7 @@ a {
 }
 
 .content {
-  height: 650px;
+  height: 100%;
   padding: $large-spacing;
   // background: $primaryCard;
   border: 1px solid $primaryDark;
@@ -118,17 +122,32 @@ a {
   // box-shadow: 0px 4px 4px $primaryCard;
   box-shadow: 0px 4px 32px rgb(0 1 0);
   border-radius: 0px 0px 4px 4px;
-  overflow: hidden auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   width: 100%;
   margin: auto;
 
   &.small {
-     width: 50%;
+    width: 50%;
   }
 
+  @extend .custom-scrollbar;
+}
+.custom-scrollbar {
+  //IE
+  scrollbar-face-color: $primaryAccent;
+  scrollbar-track-color:rgba(0, 0, 0, 0.1);
+  scrollbar-arrow-color: $primaryAccent;
+
+  // firefox
+  scrollbar-color: $primaryAccent  rgba(100, 100, 100, .2);
+  scrollbar-width: thin;
+
+  // other
   &::-webkit-scrollbar {
     width: $small-spacing;
+    height: $small-spacing;
   }
   /* Track */
   &::-webkit-scrollbar-track {
@@ -148,12 +167,106 @@ a {
   }
 }
 
+
+.tools-container {
+  width: 100%;
+  // height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 100px;
+
+  .tools {
+    display: inline-flex;
+    font-size: $medium-spacing;
+    width: max-content;
+    // height: min-content;
+  }
+
+  @extend .custom-scrollbar;
+
+   //IE
+   scrollbar-face-color: rgba(0, 0, 0, 0.8);
+   scrollbar-arrow-color:rgba(0, 0, 0, 0.8);
+
+   // firefox
+   scrollbar-color: rgba(0, 0, 0, 0.8)  rgba(100, 100, 100, .2);
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+  /* Track */
+  &::-webkit-scrollbar-track {
+    border-radius: 0px 0px 100px 100px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0px 0px 100px 100px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+
+  .tool-icon {
+    padding: 8px;
+    background-color: $primaryCard;
+    margin-right: 4px;
+    transition: all 0.3s ease-in;
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    &:hover {
+      color: #ffff;
+      background-color: $secondaryCard;
+    }
+  }
+}
+
+
+img {
+  box-shadow: 0px 4px 4px #000000;
+  border-radius: $small-spacing;
+  width: 100%;
+  cursor: pointer;
+  &:hover, &:focus {
+    box-shadow: 0px 0px 4px $secondaryTextAccent;
+  }
+}
+
+.project-title {
+  // color: azure;;
+}
+
+.images-container {
+  overflow: auto;
+  display: inline-grid;
+
+  @extend .custom-scrollbar;
+  img {
+    height: 100%;
+    width: 100%;
+
+    &:focus {
+        width: fit-content;
+        position: absolute;
+        left: 50%;
+        right: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.4s ease;
+      }
+  }
+}
+
+
 .grid-layout {
   display: grid;
   grid-template-columns: auto auto auto;
-
+  grid-gap: $large-spacing;
+  justify-content: center;
+  height: inherit;
   &.two {
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 50%);
   }
 }
 
@@ -168,23 +281,23 @@ a {
     margin-top: $large-spacing;
   }
   &.extra-large {
-    margin-top: $extra-large-spacing
+    margin-top: $extra-large-spacing;
   }
-}
-
-.row {
-  display: flex;
-  flex-direction: column;
-}
-
-.column {
-  flex: 1 1 0px;
 }
 
 .highlight {
   color: $primaryAccent;
 }
 
+.card {
+  background-color: $primaryCard;
+  padding: $medium-spacing;
+  border-radius: 4px;
+
+  &.secondary {
+    background-color: $secondaryCard;
+  }
+}
 // character
 :root {
   --pixel-size: 1;
@@ -228,11 +341,19 @@ a {
 
 // media queries
 @media screen and (max-width: 1024px) {
+  .row {
+    flex-direction: column;
+  }
 
+  .grid-layout, .grid-layout.two {
+    grid-template-columns: 100%;
+    flex-direction: column;
+  }
 }
 
 
 @media screen and (max-width: 768px) {
+
   .background {
     font-size: 44vw;
   }
@@ -243,27 +364,22 @@ a {
     left: 0%;
     transform: none;
     -ms-transform: none;
+    &.wide {
+      width: 100%;
+    }
   }
 
   .content {
     height: 100%;
   }
-  .grid-layout {
-    grid-template-columns: auto;
-  }
+
+
 }
 
-
-
-@media screen and (max-height: 650px) {
+@media screen and (max-width: 650px) {
   .container {
     width: 100%;
     height: 100%;
-    top: 0%;
-    transform: none;
-    -ms-transform: none;
-    padding-right: 0px;
-    padding-left: 0px;
   }
 }
 
@@ -276,50 +392,6 @@ a {
   .content {
     width: 100%;
   }
-
-  // .footer {
-  //   height: 5%;
-  //   left: 0%;
-  //   bottom: 0%;
-  //   width: 100%;
-
-  //   .info {
-  //     background-color: rgba(100, 100, 100, 0.5);
-  //     box-shadow: 0px 4px 4px #000000;
-  //     padding: 4px;
-  //     display: inline-flex;
-  //     align-items: center;
-  //     width: 100%;
-  //     margin: auto;
-
-  //     :nth-child(1) {
-  //       font-family: "Montez", cursive;
-  //       font-size: 18px;
-  //       line-height: 0px;
-  //       color: #FFFF;
-  //       &:after {
-  //         content: ' | ';
-  //       }
-
-  //     :nth-child(2) {
-  //       font-size: 12px;
-  //       color: #DD1C10;
-  //       font-weight: 900;
-  //       &:before, &:after {
-  //         content: ' | ';
-  //       }
-  //     }
-
-  //     :nth-child(3) {
-  //       font-size: 8px;
-  //       line-height: 0px;
-  //       color: #ffff;
-  //       &:before {
-  //         content: ' | ';
-  //       }
-  //     }
-  //   }
-  // }
 }
 
 
@@ -359,37 +431,5 @@ a {
 //     }
 //   }
 
-//   &[min-width~="600px"] {
-//     h2 {
-//       padding: 55px;
-//       text-align: center;
-//       font-size: 24px;
-//     }
-//   }
 
-//   &[min-width~="700px"] {
-//     h2 {
-//       font-size: 34px;
-//       color: red;
-//     }
-//   }
-// }
-.card {
-  // border-radius: 4px;
-  // border: 1px solid #eee;
-  // background-color: #fafafa;
-  // height: 40px;
-  // margin: 0 8px $medium-spacing;
-  // padding: $medium-spacing;
-  // transition: all 0.2s ease-in-out;
-  // line-height: 24px;
-
-  background-color: $primaryCard;
-  padding: $medium-spacing;
-  border-radius: 4px;
-
-  &.secondary {
-    background-color: $secondaryCard;
-  }
-}
 

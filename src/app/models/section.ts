@@ -5,6 +5,5 @@ export class Section {
   segment: string;
   element: HTMLElement;
   width: string;
-  height: string;
   padding: string;
 }

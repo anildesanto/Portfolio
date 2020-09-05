@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Project } from 'src/app/models/project';
 
 @Component({
@@ -6,12 +6,13 @@ import { Project } from 'src/app/models/project';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent implements OnInit {
+export class ProjectComponent {
   @Input() project: Project;
+  @Output() imageClick: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
+ public clickImage(): void {
+   this.imageClick.emit(this.project.id);
+ }
 }

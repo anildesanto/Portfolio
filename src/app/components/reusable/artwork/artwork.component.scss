@@ -1,24 +1,29 @@
 @import "src/app//styles/variables.scss";
 
 :host {
-  height: 100%;
-  width: 100%;
-}
-
-.artwork {
   height: inherit;
+  width: 100%;
   transition: all 0.3s ease-in-out;
-}
-
-.image-container {
-    width: fit-content;
-    height: 100%;
-    margin: auto;
-
+  margin: auto;
+  display: inline-flex;
+  justify-content: center;
   img {
     box-shadow: 0px 4px 4px #000000;
     border-radius: 8px;
     height: 100%;
+    width: auto;
+    cursor: default;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :host {
+    height: auto;
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
   }
 }
 

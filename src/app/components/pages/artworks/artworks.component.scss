@@ -51,3 +51,14 @@
     }
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .artwork-controller {
+    display: none;
+  }
+  .artwork-container {
+    display: block;
+  }
+}
+
+

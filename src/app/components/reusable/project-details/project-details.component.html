@@ -1,24 +1,30 @@
-<div class="container">
+
+<div class="container wide">
   <div class="content">
-  <div class="row">
-    <div class="column">
-      <div class="image-container">
-        <img src="../../../../assets/sample-project-image.png">
+    <div class="grid-layout two">
+      <div class="images-container">
+        <div>
+              <img *ngFor="let imageUrl of project.images"  tabindex="0" [src]="imageUrl">
+        </div>
       </div>
-      <div class="image-container">
-        <img src="../../../../assets/sample-project-image.png">
+      <div>
+        <span class="project-title">{{project.title}}</span>
+        <div class="divider small"></div>
+        <span class="highlight">{{project.year}}</span>
+        <div class="divider medium"></div>
+        <span>{{project.info}}</span>
+        <div class="divider medium"></div>
+        <div class="tools-container">
+          <div  class="tools">
+            <div class="tool-icon" *ngFor="let tool of project.tools">{{tool}}</div>
+          </div>
+        </div>
+        <div class="divider medium"></div>
+        <span *ngIf="project.designLink">Design screens can be seen <a [href]="project.designLink" target="_blank">here</a></span>
+        <div class="divider medium"></div>
+        <iframe *ngIf="sanitizeVideodUrl" class="video-container" [src]="sanitizeVideodUrl" frameborder="0" allow="autoplay; encypted-media" allowfullscreen></iframe>
+        <div class="divider large"></div>
       </div>
-      <div class="image-container">
-        <img src="../../../../assets/sample-project-image.png">
-      </div>
-    </div>
-    <div class="column">
-      <span>Title</span>
-      <div class="divider small"></div>
-      <span class="highlight">2007</span>
-      <div class="divider medium"></div>
-      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</span>
     </div>
   </div>
-  <div class="divider medium"></div></div>
 </div>

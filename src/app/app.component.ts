@@ -13,7 +13,7 @@ export class AppComponent {
 
   constructor(public helper: Helper, private portfolioService: PortfolioService) {
     ElementQueries.init();
-    this.portfolioService.onUserValueChange().subscribe((userData) => this.user = userData);
+    this.portfolioService.getUser().valueChanges().subscribe((userData) => this.user = userData);
   }
 
 

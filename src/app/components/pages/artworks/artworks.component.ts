@@ -21,7 +21,7 @@ export class ArtworksComponent implements AfterViewInit {
     });
   });
   constructor(private portfolioService: PortfolioService, private detectChangesRef: ChangeDetectorRef) {
-    this.portfolioService.onArtworksValueChange().subscribe((artworks) => {
+    this.portfolioService.geArtworks().valueChanges().subscribe((artworks) => {
       this.artworks = artworks;
       this.selectedArtwork = artworks.length > 0 ? artworks[0] : null;
       this.detectChangesRef.detectChanges();

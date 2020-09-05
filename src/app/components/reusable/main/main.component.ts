@@ -20,7 +20,7 @@ export class MainComponent implements AfterViewInit, OnDestroy{
   private containerSub: ResizeSensor;
 
   private maxStyleWidth = '100%';
-  private maxWindowWidth = 1024;
+  private maxWindowWidth = 768;
   private scrollTop = 0;
 
 
@@ -56,7 +56,6 @@ export class MainComponent implements AfterViewInit, OnDestroy{
     this.content.style.padding = section.padding;
     if (window.innerWidth > this.maxWindowWidth) {
       this.container.style.width = section.width;
-      this.content.style.height = section.height;
     } else {
       this.container.style.width = this.maxStyleWidth;
     }
@@ -64,8 +63,7 @@ export class MainComponent implements AfterViewInit, OnDestroy{
 
   private shouldNotResize(section: Section): boolean {
     const screenIsGreaterAndSizeMatch = window.innerWidth > this.maxWindowWidth
-    && this.container.style.width === section.width
-    && this.content.style.height === section.height;
+    && this.container.style.width === section.width;
 
     const screenIsSmallerAndSizeMatch = window.innerWidth <= this.maxWindowWidth
     && this.container.style.width === this.maxStyleWidth;
