@@ -13,23 +13,45 @@ export class ArtworksComponent implements AfterViewInit {
 
   public selectedArtwork: Artwork;
   public artworks: Array<Artwork> = new Array<Artwork>();
+  public colouredArtworks: Array<Artwork> = new Array<Artwork>();
+  public grayScaleArtworks: Array<Artwork> = new Array<Artwork>();
   private imageCount = 0;
+  public lightsOn = false;
 
-  private mutationObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      console.log(mutation);
-    });
-  });
   constructor(private portfolioService: PortfolioService, private detectChangesRef: ChangeDetectorRef) {
     this.portfolioService.geArtworks().valueChanges().subscribe((artworks) => {
-      this.artworks = artworks;
-      this.selectedArtwork = artworks.length > 0 ? artworks[0] : null;
+      this.artworks = this.getFilteredByColour(artworks, true);
+      this.grayScaleArtworks = this.getFilteredByColour(artworks, false);
+      this.toggleLight(false);
       this.detectChangesRef.detectChanges();
     });
   }
 
   public ngAfterViewInit(): void {
     this.detectChangesRef.detectChanges();
+  }
+
+  public getFilteredByColour(array: Array<Artwork>, isColoured: boolean): Array<Artwork> {
+    const filteredArtworks: Array<Artwork> = new Array<Artwork>();
+    for (const index in array) {
+      if (Object.prototype.hasOwnProperty.call(array, index)) {
+        const art = array[index];
+        if (art.coloured === isColoured) {
+          filteredArtworks[filteredArtworks.length] = art;
+        }
+      }
+    }
+
+    return filteredArtworks;
+  }
+
+  public toggleLight(choice: boolean = null): void {
+    this.lightsOn = choice != null ? choice : !this.lightsOn;
+    this.artworks = this.lightsOn ? this.colouredArtworks : this.grayScaleArtworks;
+    this.selectedArtwork = this.artworks.length > 0 ? this.artworks[0] : null;
+    this.imageCount = 0;
+    this.artContainer.style.right = `0px`;
+    // fade then switch
   }
 
   public move(right: boolean) {
@@ -41,7 +63,6 @@ export class ArtworksComponent implements AfterViewInit {
       this.artContainer.style.right = `${this.width * this.imageCount}px`;
     }
     this.selectedArtwork = this.artworks[this.imageCount];
-    console.log(this.width, this.computedWidth, this.artContainer.scrollWidth, this.isEnd);
   }
 
   public get artContainer(): HTMLElement { return this.artContainerRef ? this.artContainerRef.nativeElement : null; }

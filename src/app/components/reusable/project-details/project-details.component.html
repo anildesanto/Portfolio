@@ -2,15 +2,17 @@
 <div class="container wide">
   <div class="content">
     <div class="grid-layout two">
-      <div class="images-container">
-        <div>
-              <img *ngFor="let imageUrl of project.images"  tabindex="0" [src]="imageUrl">
-        </div>
-      </div>
+      <!-- <video *ngIf="!project.images?.length && sanitizeVideodUrl" class="video-container solo"controls>
+        <source [src]="sanitizeVideodUrl" type="video/mp4">
+        Your browser does not support HTML video.
+      </video> -->
+
       <div>
         <span class="project-title">{{project.title}}</span>
         <div class="divider small"></div>
         <span class="highlight">{{project.year}}</span>
+        <div class="divider medium"></div>
+        <span *ngIf="project.exampleLink">Access it <a [href]="project.exampleLink" target="_blank">here</a></span>
         <div class="divider medium"></div>
         <span>{{project.info}}</span>
         <div class="divider medium"></div>
@@ -22,8 +24,20 @@
         <div class="divider medium"></div>
         <span *ngIf="project.designLink">Design screens can be seen <a [href]="project.designLink" target="_blank">here</a></span>
         <div class="divider medium"></div>
-        <iframe *ngIf="sanitizeVideodUrl" class="video-container" [src]="sanitizeVideodUrl" frameborder="0" allow="autoplay; encypted-media" allowfullscreen></iframe>
+
         <div class="divider large"></div>
+      </div>
+
+            <div>
+         <video *ngIf="sanitizeVideodUrl"  class="video-container" controls>
+          <source [src]="sanitizeVideodUrl" type="video/mp4">
+          Your browser does not support HTML video.
+        </video>
+        <div *ngIf="project.images?.length" class="images-container" >
+          <div class="inner">
+          <img *ngFor="let imageUrl of project.images"  tabindex="0" [src]="imageUrl">
+          </div>
+        </div>
       </div>
     </div>
   </div>

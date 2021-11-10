@@ -1,11 +1,12 @@
 // colors
 
 // base
-
+$black: #000000;
+$white: #FFFFFF;
 
 // pallete
 $primary: #1D1C1C;
-$primaryDark: #000000;
+$primaryDark: $black;
 
 $primaryCard: rgba(0, 0, 0, 0.25);
 $secondaryCard: rgba(0, 0, 0, 0.8);
@@ -16,12 +17,13 @@ $secondaryAccent: #EB5757;
 $primaryText: #C8BFBF;
 $secondaryText: #F2F2F2;
 
-$primaryTextAccent: #FFFFFF;
+$primaryTextAccent: $white;
 $secondaryTextAccent: #CBC3C3;
 
 
 // dimensions
 
+$extra-small-spacing: 4px;
 $small-spacing: 8px;
 $medium-spacing: 16px;
 $large-spacing: 32px;

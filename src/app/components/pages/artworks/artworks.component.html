@@ -1,11 +1,26 @@
 
-<div class="artwork-controller card secondary">
-  <span>{{selectedArtwork?.title}}</span>
-  <div class="control-buttons">
-    <span *ngIf="!isStart" class="play-button left" tabindex="0" (click)="move(false)" (keydown.enter)="move(false)"></span>
-    <span *ngIf="!isEnd" class="play-button right" tabindex="0" (click)="move(true)" (keydown.enter)="move(true)"></span>
+<div class="artwork-controller">
+  <span class="card secondary">{{selectedArtwork?.title}}</span>
+  <div class="divider small"></div>
+
+  <div class="control-buttons card secondary">
+    <button [disabled]="isStart" class="play-button left" (click)="move(false)"></button>
+    <button [disabled]="isEnd" class="play-button right" (click)="move(true)"></button>
   </div>
+
+
 </div>
+
 <div #artcontainer class="artwork-container">
+    <div [ngClass]="lightsOn ? 'lamp on' : 'lamp'">
+      <div class="bulb">
+        <button class="switch" (click)="toggleLight()" ></button>
+        <div class="light">
+          <span class="direction"></span>
+          <span class="illumination"></span>
+        </div>
+        <div class="glass"></div>
+      </div>
+    </div>
   <app-artwork *ngFor="let artwork of artworks" [artwork]="artwork"></app-artwork>
 </div>

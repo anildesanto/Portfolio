@@ -4,16 +4,34 @@
   height: inherit;
   width: 100%;
 }
+
 .play-button {
   height: 35px;
   width: 35px;
-  background-color: #bbb;
   border-radius: 50%;
-  transition: all 0.3s ease-in-out;
+  -webkit-mask-image: url('src/assets/arrow-back.svg');
+  mask-image: url('src/assets/arrow-back.svg');
+  background-color: $primaryAccent;
+  mask-size: 32px;
+  mask-repeat: no-repeat;
+  mask-position: center;
   cursor: pointer;
 
+  transition: all 0.3s ease-in-out;
+
   &.right {
-     background-color: $secondaryAccent;
+  -webkit-mask-image: url('src/assets/arrow-forward.svg');
+  mask-image: url('src/assets/arrow-forward.svg');
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: #474843;
+    mask-size: 24px;
   }
 }
 .artwork-container {
@@ -22,35 +40,135 @@
   flex-direction: column;
   flex-wrap: wrap;
   position: relative;
-  transition: all 0.3s ease-in-out;
 }
 
 .artwork-controller {
   position: absolute;
-  left: 4%;
+  left: 0%;
   bottom: 8%;
   display: grid;
   align-items: center;
   z-index: 1;
 
-  * {
-    margin-bottom: $small-spacing;
-  }
-  :last-child {
-    margin-bottom: 0px;
-  }
-
   .control-buttons {
     display: flex;
-    width: 100%;
+    // width: 150px;
+    align-items: flex-end;
     * {
-      margin-right: $small-spacing;
+      margin-right: $medium-spacing;
     }
     :last-child {
       margin-right: 0px;
     }
   }
 }
+
+// lamp
+
+.lamp {
+  border-radius: 8px 8px 0 0;
+  position: absolute;
+  bottom: 22px;
+  right: 110px;
+  z-index: 3;
+
+  &.on {
+   .light {
+      .direction, .illumination {
+        visibility: visible;
+      }
+    }
+
+    .bulb {
+      bottom: 164px;
+      -ms-transform: rotate(115deg);
+      transform: rotate(140deg);
+      border-bottom: inset;
+      // &:after
+      .glass {
+        background-color: #ebcf57;
+        border: groove;
+        right: 7px;
+      }
+      // &:before
+      .switch  {
+        top: -8px;
+        border-bottom: solid #000;
+      }
+    }
+  }
+}
+
+
+.light {
+
+  .direction {
+    position: absolute;
+    height: 0;
+    width: 65px;
+    border-bottom: 280px solid rgba(255,255,255,0.5);
+    border-left: 45px solid transparent;
+    border-right: 45px solid transparent;
+    transform: rotate(0deg);
+    bottom: -283px;
+    right: -28px;
+    border-radius: 33px;
+
+    transition: all 1s ease-in;
+    transition-delay: 0.9s;
+    visibility: hidden;
+  }
+
+  .illumination {
+    position: absolute;
+    bottom: 0;
+    top: 427px;
+    left: 17px;
+    z-index: -1;
+    opacity: 0.2;
+    transform: rotate(0deg);
+    box-shadow: 0 0 6.375em 21em #eadf8cad;
+
+    transition: all 1s ease-in;
+    transition-delay: 0.9s;
+    visibility: hidden;
+  }
+
+}
+.bulb{
+  height: 50px;
+  width: 100px;
+  background-color: #DD1C10;
+  position: absolute;
+  bottom: 20px;
+  border-radius: 25px 25px 4px 4px;
+  transform: rotate(0deg);
+  transition: all 1s ease-in-out;
+  border-right: inset;
+  .switch {
+    content: "";
+    position: absolute;
+    height: 15px;
+    width: 25px;
+    background-color: #DD1C10;
+    border-radius: 4px 4px 4px 4px;
+    left: 38px;
+    top: -16px;
+    border: none;
+    cursor: pointer;
+  }
+  .glass {
+    content: "";
+    position: absolute;
+    height: 14px;
+    width: 79px;
+    background-color: #f1e8bf;
+    top: 49px;
+    right: 10px;
+    border-radius: 0px 0px 16px 16px;
+  }
+}
+
 
 @media screen and (max-width: 1024px) {
   .artwork-controller {
@@ -61,4 +179,17 @@
   }
 }
 
-
+// animations
+@keyframes expand-anim {
+  0% {
+    box-shadow: 0 0 26.375em 9em #ecd950;
+  }
+  50%
+  {
+    opacity: .4;
+    box-shadow: 0 0 26.375em 4em #ecd950;
+  }
+  100% {
+    box-shadow: 0 0 26.375em 9em #ecd950;
+  }
+}

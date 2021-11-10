@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/reusable/header/header.component';
 import { Helper } from './utils/helper';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './components/pages/about/about.component';
 import { OncreateDirective } from './directives/oncreate.directive';
 import { ProjectsComponent } from './components/pages/projects/projects.component';
@@ -24,6 +24,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 // import { AngularFireModule, FirebaseApp } from '@angular/fire';
 // import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ErrorDirective } from './directives/error.directive';
 // import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
@@ -38,18 +40,18 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
     ArtworkComponent,
     MainComponent,
     ProjectDetailsComponent,
-    SelectionIndicatorComponent
+    SelectionIndicatorComponent,
+    ErrorDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-
-
+    AngularFireStorageModule
   ],
   providers: [Helper],
   bootstrap: [AppComponent]

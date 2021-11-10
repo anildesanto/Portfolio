@@ -1,3 +1,30 @@
 <div>
-  <div class="card">anilde.santo@hotmail.com</div>
+  <div class="card secondary">anilde.santo@hotmail.com</div>
+  <div class="divider medium"></div>
+  <div class="card">
+    <form [formGroup]="contactForm">
+      <label for="name">Name</label>
+      <div class="divider small"></div>
+      <input type="text" id="name" formControlName="name" [appError]="errorMessages.name">
+      <div class="divider small"></div>
+
+      <label for="email">Email</label>
+      <div class="divider small"></div>
+      <input type="text" id="email" formControlName="email" [appError]="errorMessages.email" >
+      <div class="divider small"></div>
+
+      <label for="subject">Subject</label>
+      <div class="divider small"></div>
+      <input type="text" id="subject" formControlName="subject" [appError]="errorMessages.subject" >
+      <div class="divider small"></div>
+
+      <label for="text">Message</label>
+      <div class="divider small"></div>
+      <textarea type="text" id="text" formControlName="text" [appError]="errorMessages.text" ></textarea>
+      <div class="divider medium"></div>
+
+      <button type="submit" (click)="sendMessage()">Send</button>
+      <div class="divider medium"></div>
+    </form>
+  </div>
 </div>

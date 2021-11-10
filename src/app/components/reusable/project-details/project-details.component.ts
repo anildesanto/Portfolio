@@ -16,8 +16,20 @@ export class ProjectDetailsComponent {
 
   constructor(private route: ActivatedRoute, private portfolioService: PortfolioService,
               private sanitizationService: DomSanitizer) {
+
     this.route.params.pipe(concatMap((param) => this.portfolioService.getSingleProject(param.id).valueChanges()))
-    .subscribe((project) => this.project = project);
+    .subscribe((project) => {
+
+      if (!project) {
+        this.portfolioService.handleError();
+        return;
+      }
+
+      this.project = project;
+      this.portfolioService.getProjectsStorageImages(project);
+
+      this.portfolioService.getProjectDemoVideo(project);
+    });
   }
 
   public get sanitizeVideodUrl(): SafeResourceUrl { return this.project.videoUrl

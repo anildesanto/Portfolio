@@ -14,6 +14,9 @@ export class ProjectsComponent {
   constructor(private router: Router, private portfolioService: PortfolioService) {
     this.portfolioService.getProjects().valueChanges().subscribe((projects) => {
       this.projects = projects;
+      this.projects.forEach(val => {
+        this.portfolioService.getProjectDisplayImage(val);
+      });
     });
   }
 

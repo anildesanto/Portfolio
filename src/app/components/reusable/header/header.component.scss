@@ -21,7 +21,7 @@
 
     &.selected, &:hover, &:focus{
       color: $primaryTextAccent;
-      border-radius: 4px;
+      border-radius: $extra-small-spacing;
       outline: none;
     }
   }
