@@ -20,9 +20,8 @@ export class ArtworksComponent implements AfterViewInit {
 
   constructor(private portfolioService: PortfolioService, private detectChangesRef: ChangeDetectorRef) {
     this.portfolioService.geArtworks().valueChanges().subscribe((artworks) => {
-      this.artworks = this.getFilteredByColour(artworks, true);
-      this.grayScaleArtworks = this.getFilteredByColour(artworks, false);
-      this.toggleLight(false);
+      this.artworks = artworks;
+      this.selectedArtwork = artworks.length > 0 ? artworks[0] : null;
       this.detectChangesRef.detectChanges();
     });
   }

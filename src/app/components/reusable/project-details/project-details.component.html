@@ -1,12 +1,9 @@
 
 <div class="container wide">
   <div class="content">
-    <div class="grid-layout two">
-      <!-- <video *ngIf="!project.images?.length && sanitizeVideodUrl" class="video-container solo"controls>
-        <source [src]="sanitizeVideodUrl" type="video/mp4">
-        Your browser does not support HTML video.
-      </video> -->
-
+    <button class="play-button left" (click)="back()"></button>
+    <div class="divider medium"></div>
+    <div [ngClass]="sanitizeVideodUrl  ? 'grid-layout two' : ''">
       <div>
         <span class="project-title">{{project.title}}</span>
         <div class="divider small"></div>
@@ -28,7 +25,7 @@
         <div class="divider large"></div>
       </div>
 
-            <div>
+        <div>
          <video *ngIf="sanitizeVideodUrl"  class="video-container" controls>
           <source [src]="sanitizeVideodUrl" type="video/mp4">
           Your browser does not support HTML video.

@@ -32,6 +32,10 @@ export class ProjectDetailsComponent {
     });
   }
 
+  public back(): void {
+    this.portfolioService.router.navigate([this.portfolioService.sections[1].segment]);
+  }
+
   public get sanitizeVideodUrl(): SafeResourceUrl { return this.project.videoUrl
     ? this.sanitizationService.bypassSecurityTrustResourceUrl(this.project.videoUrl)
     : null; }

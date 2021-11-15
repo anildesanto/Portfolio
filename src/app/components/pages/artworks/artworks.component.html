@@ -12,7 +12,7 @@
 </div>
 
 <div #artcontainer class="artwork-container">
-    <div [ngClass]="lightsOn ? 'lamp on' : 'lamp'">
+    <!-- <div [ngClass]="lightsOn ? 'lamp on' : 'lamp'">
       <div class="bulb">
         <button class="switch" (click)="toggleLight()" ></button>
         <div class="light">
@@ -21,6 +21,6 @@
         </div>
         <div class="glass"></div>
       </div>
-    </div>
+    </div> -->
   <app-artwork *ngFor="let artwork of artworks" [artwork]="artwork"></app-artwork>
 </div>

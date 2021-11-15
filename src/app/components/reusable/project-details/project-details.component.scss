@@ -35,3 +35,33 @@
   display: flex;
   /* margin: auto; */
 }
+
+.play-button {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  -webkit-mask-image: url('src/assets/arrow-back.svg');
+  mask-image: url('src/assets/arrow-back.svg');
+  background-color: $primaryAccent;
+  mask-size: 32px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  cursor: pointer;
+
+  transition: all 0.3s ease-in-out;
+
+  &.right {
+  -webkit-mask-image: url('src/assets/arrow-forward.svg');
+  mask-image: url('src/assets/arrow-forward.svg');
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: #474843;
+    mask-size: 24px;
+  }
+}

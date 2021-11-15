@@ -18,6 +18,8 @@ export class PortfolioService {
   constructor(private fireStore: AngularFirestore, private storage: AngularFireStorage, public router: Router) {
   }
 
+  public user: User;
+
   public sections: Array<Section> = [
     {index: null, element: null, selected: false, title: 'About',
       segment: '/info/about', width: '50%', padding: '32px'},
@@ -27,9 +29,6 @@ export class PortfolioService {
 
     {index: null, element: null, selected: false, title: 'Artworks',
       segment: '/info/artworks', width: '60%', padding: '8px'},
-
-    {index: null, element: null, selected: false, title: 'Contact',
-      segment: '/info/contact', width: '40%', padding: '32px'},
   ];
 
   public getUser(): AngularFirestoreDocument<User> {
@@ -58,7 +57,7 @@ export class PortfolioService {
           project.images[project.images.length] = imageUrl;
         });
       });
-      console.log(val);
+      // console.log(val);
     }, () => {});
   }
 

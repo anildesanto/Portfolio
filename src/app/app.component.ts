@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Helper } from './utils/helper';
 import { ElementQueries } from 'css-element-queries';
 import { User } from './models/user';
@@ -9,11 +9,9 @@ import { PortfolioService } from './services/portfolio.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public user: User;
-
-  constructor(public helper: Helper, private portfolioService: PortfolioService) {
+  constructor(public helper: Helper, public portfolioService: PortfolioService) {
     ElementQueries.init();
-    this.portfolioService.getUser().valueChanges().subscribe((userData) => this.user = userData);
+    this.portfolioService.getUser().valueChanges().subscribe((userData) => this.portfolioService.user = userData);
   }
 
 

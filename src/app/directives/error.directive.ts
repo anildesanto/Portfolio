@@ -19,7 +19,7 @@ export class ErrorDirective implements OnInit {
     this.createErrorMessageContainer();
     this.abstractControl.statusChanges.subscribe((value) => {
       this.errorMessageContainer.innerText = this.getErrorMessage();
-      console.log(this.getErrorMessage());
+      // console.log(this.getErrorMessage());
     });
   }
 

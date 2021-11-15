@@ -1,10 +1,10 @@
 <div>
- <div>{{profileText}}</div>
+ <div>{{portfolioService?.user?.profileText}}</div>
  <div class="divider large"></div>
- <div>Experience and Education : <a target="_blank" [href]="experienceLink">{{experienceLink}}</a></div>
+ <div>Experience and Education : <a target="_blank" [href]="portfolioService?.user?.experienceLink">{{portfolioService?.user?.experienceLink}}</a></div>
  <div class="divider large"></div>
  <div class="languages card">
-   <div *ngFor="let language of languages">
+   <div *ngFor="let language of portfolioService?.user?.languages">
       <div  class="language"><img src="../../../../assets/speech-bubble.svg"/> <span>{{language.title}}</span><span class="divider">-</span><span>{{language.level}}</span></div>
       <div class="divider small"></div>
     </div>
