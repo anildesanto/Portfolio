@@ -26,6 +26,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ErrorDirective } from './directives/error.directive';
+import { ErrorComponent } from './components/pages/error/error.component';
 // import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ErrorDirective } from './directives/error.directive';
     MainComponent,
     ProjectDetailsComponent,
     SelectionIndicatorComponent,
-    ErrorDirective
+    ErrorDirective,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

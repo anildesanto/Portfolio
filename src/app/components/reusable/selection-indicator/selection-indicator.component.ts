@@ -15,7 +15,7 @@ export class SelectionIndicatorComponent implements AfterViewInit, OnChanges, On
   private targetSub: ResizeSensor;
   private pixelsSuffix = 'px';
 
-  // TODO -- Check move to position calculation
+// FIXME -- Check move to position calculation
   public ngAfterViewInit(): void {
     this.targetSub = new ResizeSensor(this.target, _ => {
       this.moveAnResize();

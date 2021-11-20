@@ -67,7 +67,7 @@
 
 .lamp {
   border-radius: 8px 8px 0 0;
-  position: absolute;
+  position: fixed;
   bottom: 22px;
   right: 110px;
   z-index: 3;
@@ -114,8 +114,8 @@
     right: -28px;
     border-radius: 33px;
 
-    transition: all 1s ease-in;
-    transition-delay: 0.9s;
+    // transition: all 1s ease-in;
+    transition-delay: 0.05s;
     visibility: hidden;
   }
 
@@ -129,8 +129,8 @@
     transform: rotate(0deg);
     box-shadow: 0 0 6.375em 21em #eadf8cad;
 
-    transition: all 1s ease-in;
-    transition-delay: 0.9s;
+    // transition: all 1s ease-in;
+    transition-delay: 0.05s;
     visibility: hidden;
   }
 

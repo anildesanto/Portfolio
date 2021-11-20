@@ -44,12 +44,14 @@ export class ArtworksComponent implements AfterViewInit {
     return filteredArtworks;
   }
 
+  // REVIEWME - check light integration and if it's still necessary
   public toggleLight(choice: boolean = null): void {
     this.lightsOn = choice != null ? choice : !this.lightsOn;
-    this.artworks = this.lightsOn ? this.colouredArtworks : this.grayScaleArtworks;
-    this.selectedArtwork = this.artworks.length > 0 ? this.artworks[0] : null;
-    this.imageCount = 0;
-    this.artContainer.style.right = `0px`;
+    // this.artworks = this.lightsOn ? this.colouredArtworks : this.grayScaleArtworks;
+    // this.selectedArtwork = this.artworks.length > 0 ? this.artworks[0] : null;
+    // this.imageCount = 0;
+    // this.artContainer.style.right = `0px`;
+    
     // fade then switch
   }
 

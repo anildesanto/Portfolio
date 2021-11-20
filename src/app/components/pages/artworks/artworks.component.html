@@ -12,7 +12,12 @@
 </div>
 
 <div #artcontainer class="artwork-container">
-    <!-- <div [ngClass]="lightsOn ? 'lamp on' : 'lamp'">
+  <!-- Artworks -->
+  <app-artwork *ngFor="let artwork of artworks" [artwork]="artwork"></app-artwork>
+  <!-- Lamp -->
+  
+   <!-- REVIEWME - check light integration and if it's still necessary -->
+    <div [ngClass]="lightsOn ? 'lamp on' : 'lamp'">
       <div class="bulb">
         <button class="switch" (click)="toggleLight()" ></button>
         <div class="light">
@@ -21,6 +26,6 @@
         </div>
         <div class="glass"></div>
       </div>
-    </div> -->
-  <app-artwork *ngFor="let artwork of artworks" [artwork]="artwork"></app-artwork>
+    </div>
+ 
 </div>

@@ -76,6 +76,6 @@ export class PortfolioService {
   // handle error
   // TODO == add error page
   public handleError() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/error']);
   }
 }
