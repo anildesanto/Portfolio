@@ -13,14 +13,14 @@ import { DomSanitizer, SafeUrl, SafeResourceUrl } from '@angular/platform-browse
 export class ProjectDetailsComponent {
 
   public project: Project = new Project();
-
+  // TODO - add professional indicator 
   constructor(private route: ActivatedRoute, private portfolioService: PortfolioService,
               private sanitizationService: DomSanitizer) {
 
     this.route.params.pipe(concatMap((param) => this.portfolioService.getSingleProject(param.id).valueChanges()))
     .subscribe((project) => {
 
-      if (!project) {
+      if (!project || project.hide) {
         this.portfolioService.handleError();
         return;
       }

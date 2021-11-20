@@ -2,4 +2,41 @@
 
 .image-container {
   width: 100%;
+  position: relative;
 }
+
+.ribbon-live {
+  position: absolute;
+  width: 8%;
+  height: 30%;
+  background: $primaryAccent;
+  top: -10px;
+  left: 25px;
+  border-end-start-radius: 4px;
+  border-end-end-radius: 4px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -10px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid $secondaryAccent; 
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid $secondaryAccent;
+  }
+
+  //Display text vertically and centered
+  p {
+    width:1%;
+    word-wrap: break-word;
+    margin: 40%;
+    margin-top: 15%;
+    font-size: 55%;
+    white-space: break-spaces;
+    font-weight: bold;
+    font-family: 'Monoton';
+  }
+}
+
+

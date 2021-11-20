@@ -10,4 +10,6 @@ export class Project {
   id: string;
   tools: Array<string>;
   videoUrl: string;
+  live: boolean;
+  hide: boolean
 }

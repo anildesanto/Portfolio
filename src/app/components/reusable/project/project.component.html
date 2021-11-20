@@ -1,4 +1,5 @@
 <div class="image-container">
+  <div *ngIf="project.live" #ribbon class="ribbon-live"><p #personalBadge>Live</p></div>
   <img [src]="project.displayImage" [alt]="project.title" (click)="clickImage()" (keydown.enter)="clickImage()">
 </div>
 <div>

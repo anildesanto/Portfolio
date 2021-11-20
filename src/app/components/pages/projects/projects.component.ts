@@ -14,7 +14,7 @@ export class ProjectsComponent {
   // TODO -- Keep navigation arrow at the top when scrolling
   constructor(private router: Router, private portfolioService: PortfolioService) {
     this.portfolioService.getProjects().valueChanges().subscribe((projects) => {
-      this.projects = projects;
+      this.projects = projects.filter((project) => !project.hide);
       this.projects.forEach(val => {
         this.portfolioService.getProjectDisplayImage(val);
       });
