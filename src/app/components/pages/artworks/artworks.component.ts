@@ -9,7 +9,7 @@ import { fromEvent } from 'rxjs';
   styleUrls: ['./artworks.component.scss']
 })
 export class ArtworksComponent implements AfterViewInit {
-  @ViewChild('artcontainer', {static: false}) artContainerRef: ElementRef;
+  @ViewChild('artcontainer') artContainerRef: ElementRef;
 
   public selectedArtwork: Artwork;
   public artworks: Array<Artwork> = new Array<Artwork>();

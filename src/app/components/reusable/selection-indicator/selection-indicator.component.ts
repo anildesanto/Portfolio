@@ -11,7 +11,7 @@ import { ResizeSensor } from 'css-element-queries';
 export class SelectionIndicatorComponent implements AfterViewInit, OnDestroy {
 
   @Input() target: HTMLElement;
-  @ViewChild('indicator', {static: false}) indicatorRef: ElementRef;
+  @ViewChild('indicator') indicatorRef: ElementRef;
   private targetSub: ResizeSensor;
   private pixelsSuffix = 'px';
 

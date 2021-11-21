@@ -10,8 +10,8 @@ import { ResizeSensor } from 'css-element-queries';
 export class ProjectComponent {
   @Input() project: Project;
   @Output() imageClick: EventEmitter<string> = new EventEmitter<string>();
-  @ViewChild('liveText', {static: false}) liveTextRef: ElementRef;
-  @ViewChild('ribbon', {static: false}) ribbonRef: ElementRef;
+  @ViewChild('liveText') liveTextRef: ElementRef;
+  @ViewChild('ribbon') ribbonRef: ElementRef;
   private liveText: HTMLParagraphElement;
   private ribbon: HTMLDivElement;
   private targetSub: ResizeSensor;

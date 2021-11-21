@@ -1,3 +1,5 @@
+import { Injectable } from "@angular/core";
+@Injectable()
 export class Helper {
   title = 'portfolio';
   name = 'Anilde Santo';

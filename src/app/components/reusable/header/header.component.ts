@@ -11,7 +11,7 @@ import { SelectionIndicatorComponent } from '../selection-indicator/selection-in
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnDestroy {
-  @ViewChild('indicator', {static: false}) indicator: SelectionIndicatorComponent;
+  @ViewChild('indicator') indicator: SelectionIndicatorComponent;
   @Input() sections: Array<Section> =  new Array<Section>();
   @Output() selectionChange: EventEmitter<Section> = new EventEmitter<Section>();
 

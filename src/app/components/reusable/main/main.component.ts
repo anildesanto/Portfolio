@@ -13,9 +13,9 @@ import { ResizeSensor } from 'css-element-queries';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements AfterViewInit, OnDestroy{
-  @ViewChild('content', {static: false}) contentRef: ElementRef;
-  @ViewChild('container', {static: false}) containerRef: ElementRef;
-  @ViewChild('header', {static: false}) header: HeaderComponent;
+  @ViewChild('content') contentRef: ElementRef;
+  @ViewChild('container') containerRef: ElementRef;
+  @ViewChild('header') header: HeaderComponent;
 
   private containerSub: ResizeSensor;
 
