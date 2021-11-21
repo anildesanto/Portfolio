@@ -9,6 +9,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class ContactComponent {
   constructor(private formBuilder: FormBuilder) { }
   // TODO -- add mail API
+  // TODO -- add recaptcha
   public contactForm = this.formBuilder.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],

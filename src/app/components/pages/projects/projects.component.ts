@@ -11,7 +11,6 @@ import { Router } from '@angular/router';
 export class ProjectsComponent {
   public projects: Array<Project> = new Array<Project>();
 
-  // TODO -- Keep navigation arrow at the top when scrolling
   constructor(private router: Router, private portfolioService: PortfolioService) {
     this.portfolioService.getProjects().valueChanges().subscribe((projects) => {
       this.projects = projects.filter((project) => !project.hide);

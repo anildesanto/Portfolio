@@ -11,9 +11,10 @@ import { DomSanitizer, SafeUrl, SafeResourceUrl } from '@angular/platform-browse
   styleUrls: ['./project-details.component.scss']
 })
 export class ProjectDetailsComponent {
-
+  
+  // TODO -- Keep navigation arrow at the top when scrolling
+  // TODO -- Page layout
   public project: Project = new Project();
-  // TODO - add professional indicator 
   constructor(private route: ActivatedRoute, private portfolioService: PortfolioService,
               private sanitizationService: DomSanitizer) {
 

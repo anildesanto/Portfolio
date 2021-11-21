@@ -74,8 +74,12 @@ export class PortfolioService {
   }
 
   // handle error
-  // TODO == add error page
-  public handleError() {
-    this.router.navigate(['/error']);
+  // TODO == add service error page
+  public handleError(serviceError?: boolean) {
+    if(serviceError) {
+      //this.router.navigate(['/service-error']);
+    } else {
+      this.router.navigate(['/error']);
+    }
   }
 }

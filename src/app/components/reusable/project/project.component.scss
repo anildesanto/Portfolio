@@ -1,5 +1,16 @@
 @import "src/app//styles/variables.scss";
 
+// functions
+@mixin animate($animationName,$duration, $delay, $iterationCount: 1,$timingFunction: inherit, $fillMode: forwards) {
+  animation-name: $animationName;  
+  animation-duration: $duration;
+  animation-delay: $delay;
+  animation-iteration-count: $iterationCount;
+  animation-timing-function: $timingFunction;
+  animation-fill-mode: $fillMode;
+}
+
+// Styling
 .image-container {
   width: 100%;
   position: relative;
@@ -15,6 +26,9 @@
   border-end-start-radius: 4px;
   border-end-end-radius: 4px;
 
+  // animate
+  @include animate(height-expand-anim, .5s, .2s, linear);
+
   &:before {
     content: "";
     position: absolute;
@@ -24,6 +38,10 @@
     border-right: 5px solid $secondaryAccent; 
     border-top: 5px solid transparent;
     border-bottom: 5px solid $secondaryAccent;
+    visibility: hidden;
+
+    // animate
+    @include animate(appear-anim, .5s, .2s, ease-out);
   }
 
   //Display text vertically and centered
@@ -37,6 +55,18 @@
     font-weight: bold;
     font-family: 'Monoton';
   }
+}
+
+
+// animations
+@keyframes height-expand-anim {
+  0% {height: 0%; }
+  100% {height: 30%; }
+}
+
+@keyframes appear-anim {
+  from { visibility: hidden; }
+  to  { visibility: visible; }
 }
 
 
