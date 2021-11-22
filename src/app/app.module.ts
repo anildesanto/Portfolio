@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/reusable/header/header.component';
 import { Helper } from './utils/helper';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './components/pages/about/about.component';
 import { OncreateDirective } from './directives/oncreate.directive';
 import { ProjectsComponent } from './components/pages/projects/projects.component';
@@ -20,14 +20,11 @@ import { SelectionIndicatorComponent } from './components/reusable/selection-ind
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
-// import { AngularFireModule, FirebaseApp } from '@angular/fire';
-// import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ErrorDirective } from './directives/error.directive';
 import { ErrorComponent } from './components/pages/error/error.component';
-// import { environment } from 'src/environments/environment';
+import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,9 +50,16 @@ import { ErrorComponent } from './components/pages/error/error.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    RecaptchaV3Module
   ],
-  providers: [Helper],
+  providers: [
+    Helper,
+    {
+      provide: RECAPTCHA_V3_SITE_KEY,
+      useValue: environment.recaptcha.siteKey,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

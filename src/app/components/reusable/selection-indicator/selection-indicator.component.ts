@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, ViewChild, AfterViewInit, OnDestroy, OnChanges } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { ResizeSensor } from 'css-element-queries';
@@ -8,7 +8,7 @@ import { ResizeSensor } from 'css-element-queries';
   templateUrl: './selection-indicator.component.html',
   styleUrls: ['./selection-indicator.component.scss']
 })
-export class SelectionIndicatorComponent implements AfterViewInit, OnDestroy {
+export class SelectionIndicatorComponent implements AfterViewInit, OnDestroy, OnChanges {
 
   @Input() target: HTMLElement;
   @ViewChild('indicator') indicatorRef: ElementRef;
@@ -20,6 +20,9 @@ export class SelectionIndicatorComponent implements AfterViewInit, OnDestroy {
     this.targetSub = new ResizeSensor(this.target, _ => {
       this.moveAnResize();
     });
+  }
+  public ngOnChanges(): void {
+    this.moveAnResize();
   }
 
   public ngOnDestroy(): void {

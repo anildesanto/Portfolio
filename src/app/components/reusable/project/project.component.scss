@@ -27,7 +27,7 @@
   border-end-end-radius: 4px;
 
   // animate
-  @include animate(height-expand-anim, .5s, .2s, linear);
+  @include animate(height-expand-anim, .5s, .2s, 1, ease);
 
   &:before {
     content: "";
@@ -41,7 +41,7 @@
     visibility: hidden;
 
     // animate
-    @include animate(appear-anim, .5s, .2s, ease-out);
+    @include animate(appear-anim, .5s, .2s, 1, ease-out);
   }
 
   //Display text vertically and centered
@@ -68,5 +68,18 @@
   from { visibility: hidden; }
   to  { visibility: visible; }
 }
+
+@keyframes expand-anim {
+  0% {
+    height: 0%;
+    width: 0%;
+  }
+
+  100%{
+    height:100%;
+    width: 100%;
+  }
+}
+
 
 
