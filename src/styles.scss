@@ -1,4 +1,5 @@
 @import "./app/styles/variables.scss";
+@import "./app/styles/animations.scss";
 
 html {
   position: absolute;
@@ -356,47 +357,6 @@ button {
     background-color: $secondaryCard;
   }
 }
-// character
-:root {
-  --pixel-size: 1;
-  --character-size: 32px;
-  --character-sprites: 4;
-}
-
-.Character {
-  width: calc(var(--character-size) * var(--pixel-size));
-  height: calc(var(--character-size) * var(--pixel-size));
-  overflow: hidden;
-  position: relative;
-  margin: 4em auto;
-}
-
-.Character_spritesheet {
-  animation: moveSpritesheet 1s steps(var(--character-sprites)) infinite;
-  width: calc(var(--character-size) * var(--character-sprites) * var(--pixel-size));
-  position: absolute;
-
-}
-.Character_shadow {
-  position: absolute;
-  width: calc(var(--character-size) * var(--pixel-size));
-  height: calc(var(--character-size) * var(--pixel-size));
-}
-
-.pixelart {
-  image-rendering: pixelated;
-}
-
-.face-right {
-  top: calc(-var(--character-size) * var(--pixel-size));
-}
-.face-up {
-  top: calc(-(var(--character-size)*2) * var(--pixel-size));
-}
-.face-left {
-  top: calc(-(var(--character-size)*3) * var(--pixel-size));
-}
-
 // media queries
 @media screen and (max-width: 1024px) {
   .row {
@@ -471,42 +431,8 @@ button {
   }
 }
 
-
-
 // animations
-@keyframes moveSpritesheet {
-  from {
-     transform: translate3d(0px,0,0)
-  }
-  to {
-     transform: translate3d(-100%,0,0)
-  }
-}
 
-@keyframes moveRight {
-  from {right: 0px;}
-  to {right: 200px;}
-}
-
-@keyframes moveLeft {
-  from {left: 0px;}
-  to {left: 200px;}
-}
-
-// animations
-@keyframes glow-anim {
-  0% {background-color:$primaryAccent; }
-  50% {background-color: $secondaryAccent;}
-  100% {background-color:$primaryAccent; }
-}
-
-
-// .widget-name {
-//   &[min-width~="400px"] {
-//     h2 {
-//        font-size: 18px;
-//     }
-//   }
 
 
 

@@ -1,4 +1,5 @@
 @import "src/app//styles/variables.scss";
+@import "src/app/styles/animations.scss";
 
 .selection-indicator {
 transition: all 0.3s ease-in-out;
@@ -14,17 +15,7 @@ height: $extra-small-spacing;
     background: $primaryAccent;
     transform: matrix(1, 0, 0, -1, 0, 0);
 
-    animation-name: glow-anim;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
+    //animate
+    @include animate(glow-anim, 2.5s, 0s, infinite, ease);
   }
-}
-
-
-// animations
- @keyframes glow-anim {
-  0% {background-color:$primaryAccent; }
-  50% {background-color: $secondaryAccent;}
-  100% {background-color:$primaryAccent; }
 }

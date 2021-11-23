@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, OnInit, AfterViewInit, OnChanges, OnDestroy } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { ResizeSensor } from 'css-element-queries';
 
@@ -7,7 +7,7 @@ import { ResizeSensor } from 'css-element-queries';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent {
+export class ProjectComponent implements OnChanges, AfterViewInit, OnDestroy {
   @Input() project: Project;
   @Output() imageClick: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('liveText') liveTextRef: ElementRef;
@@ -16,16 +16,13 @@ export class ProjectComponent {
   private ribbon: HTMLDivElement;
   private targetSub: ResizeSensor;
   private ribbonInViewObserver: IntersectionObserver;
-  private options: IntersectionObserverInit = {
+  private readonly options: IntersectionObserverInit = {
     root: null,
     rootMargin: '20px',
     threshold: 0.10
   };
-  constructor() { }
 
-  public clickImage(): void {
-    this.imageClick.emit(this.project.id);
-  }
+  constructor() { }
 
   public ngAfterViewInit():void {
     
@@ -55,6 +52,10 @@ export class ProjectComponent {
     if(this.ribbonInViewObserver) {
       this.ribbonInViewObserver.disconnect();
     }
+  }
+
+  public clickImage(): void {
+    this.imageClick.emit(this.project.id);
   }
 
   private resizeText(): void {
