@@ -1,11 +1,11 @@
-<div class="image-container">
+<div *ngIf="project.displayImage"  class="image-container">
   <div *ngIf="project.live" #ribbon class="ribbon-live">
     <p #liveText>Live</p>
   </div>
  
   <img [src]="project.displayImage" [alt]="project.title" (click)="clickImage()" (keydown.enter)="clickImage()">
 </div>
-<div>
+<div class="project-intro">
   <span class="project-title">{{project.title}}</span>
   <div class="divider small"></div>
   <span class="highlight">{{project.year}}</span>

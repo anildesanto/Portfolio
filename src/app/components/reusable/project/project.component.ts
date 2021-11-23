@@ -7,11 +7,28 @@ import { ResizeSensor } from 'css-element-queries';
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss']
 })
-export class ProjectComponent implements OnChanges, AfterViewInit, OnDestroy {
+export class ProjectComponent implements OnChanges, OnDestroy {
   @Input() project: Project;
   @Output() imageClick: EventEmitter<string> = new EventEmitter<string>();
-  @ViewChild('liveText') liveTextRef: ElementRef;
-  @ViewChild('ribbon') ribbonRef: ElementRef;
+  @ViewChild('liveText') set liveTextRef(elementRef: ElementRef) {
+    if(elementRef) {
+      this.liveText = elementRef.nativeElement;
+    }
+  }
+  @ViewChild('ribbon') set ribbonRef(elementRef: ElementRef) {
+    if(elementRef) {
+      this.ribbon = elementRef.nativeElement;
+
+      // start observing
+      this.ribbonInViewObserver = new IntersectionObserver(this.startAnimation.bind(this), this.options);
+      this.ribbonInViewObserver.observe(this.ribbon);
+
+      this.targetSub = new ResizeSensor(this.ribbon, _ => {
+        this.resizeText();
+      });
+    }
+  }
+
   private liveText: HTMLParagraphElement;
   private ribbon: HTMLDivElement;
   private targetSub: ResizeSensor;
@@ -23,22 +40,6 @@ export class ProjectComponent implements OnChanges, AfterViewInit, OnDestroy {
   };
 
   constructor() { }
-
-  public ngAfterViewInit():void {
-    
-    if(this.ribbonRef && this.liveTextRef) {
-      this.liveText = this.liveTextRef.nativeElement;
-      this.ribbon = this.ribbonRef.nativeElement; 
-
-      // start observing
-      this.ribbonInViewObserver = new IntersectionObserver(this.startAnimation.bind(this), this.options);
-      this.ribbonInViewObserver.observe(this.ribbon);
-
-      this.targetSub = new ResizeSensor(this.ribbon, _ => {
-        this.resizeText();
-      });
-    }
-  }
 
   public ngOnChanges(): void {
     this.resizeText();

@@ -11,14 +11,21 @@
     height: 0%;
 
     // animate
-    @include animate(expand-anim, 1s, .5s, 1, ease);
+    @include animate(expand-anim, .5s, .2s, 1, ease);
   }
+}
+
+.project-intro {
+  overflow: hidden;
+  height: 100%;
+  width: 0%;
+  @include animate(width-expand-max-anim, .5s, .5s, 1, ease);
 }
 
 .ribbon-live {
   position: absolute;
   width: 8%;
-  height: 30%;
+  height: 0%;
   background: $primaryAccent;
   top: -10px;
   left: 25px;

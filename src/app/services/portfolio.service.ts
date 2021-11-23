@@ -4,17 +4,16 @@ import { User } from '../models/user';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Project } from '../models/project';
 import { Artwork } from '../models/artwork';
-import { FirebaseStorage } from '@angular/fire';
-import { AngularFireStorage, AngularFireStorageReference } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
-import { Reference } from '@angular/compiler/src/render3/r3_ast';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
+import { Audio } from '../models/audio';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PortfolioService {
 
+  // TODO - Add session management
   constructor(private fireStore: AngularFirestore, private storage: AngularFireStorage, public router: Router) {
   }
 
@@ -47,6 +46,14 @@ export class PortfolioService {
     return this.getUser().collection('artworks');
   }
 
+  public getAudios(): AngularFirestoreCollection<Audio> {
+    return this.getUser().collection('audio');
+  }
+
+  public getSingleAudio(audioId: string): AngularFirestoreDocument<Audio> {
+    return this.getAudios().doc(audioId);
+  }
+
   // storage queries
 
   public getProjectsStorageImages(project: Project): any {
@@ -57,7 +64,6 @@ export class PortfolioService {
           project.images[project.images.length] = imageUrl;
         });
       });
-      // console.log(val);
     }, () => {});
   }
 
@@ -75,7 +81,7 @@ export class PortfolioService {
 
   // handle error
   // TODO == add service error page
-  public handleError(serviceError?: boolean) {
+  public handleError(serviceError: boolean = false) {
     if(serviceError) {
       //this.router.navigate(['/service-error']);
     } else {

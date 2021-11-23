@@ -19,6 +19,16 @@
     0% {height: 0%; }
     100% {height: 30%; }
 }
+
+@keyframes height-expand-max-anim {
+    0% {height: 0%; }
+    100% {height: 100%; }
+}
+
+@keyframes width-expand-max-anim {
+    0% {width: 0%; }
+    100% {width: 100%; }
+}
   
 @keyframes appear-anim {
     from { visibility: hidden; }
@@ -36,3 +46,8 @@
         width: 100%;
     }
 }
+
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: $secondaryAccent }
+  }

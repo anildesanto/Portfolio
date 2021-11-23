@@ -1,4 +1,18 @@
 @import "src/app//styles/variables.scss";
+@import "src/app//styles/animations.scss";
+
+.about-content {
+  overflow: hidden;
+  height: 0%;
+  width: 100%;
+
+  @include animate(height-expand-max-anim, .5s, .5s, 1, ease);
+}
+
+.caret {
+  @include animate(blink, 1s, 0s, infinite, step-end);
+  border-left: 4px solid $secondaryAccent;
+}
 
 .languages {
   display: grid;
