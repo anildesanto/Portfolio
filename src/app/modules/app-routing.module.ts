@@ -12,16 +12,17 @@ import { ProjectDetailsComponent } from '../components/reusable/project-details/
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/info/about',
+    redirectTo: 'info/about',
     pathMatch: 'full'
   },
+  
   {
     path: 'info',
     component: MainComponent,
     children: [
       {
         path: '',
-        redirectTo: '/about',
+        redirectTo: 'about',
         pathMatch: 'full'
       },
       {

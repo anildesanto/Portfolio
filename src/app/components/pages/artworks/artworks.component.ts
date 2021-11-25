@@ -18,15 +18,26 @@ export class ArtworksComponent implements AfterViewInit {
   private imageCount = 0;
   public lightsOn = false;
 
-  constructor(private portfolioService: PortfolioService, private detectChangesRef: ChangeDetectorRef) {
+  constructor(private portfolioService: PortfolioService, private detectChangesRef: ChangeDetectorRef) {}
+
+  public ngAfterViewInit(): void {
     this.portfolioService.geArtworks().valueChanges().subscribe((artworks) => {
-      this.artworks = artworks.filter((artwork) => !artwork.hide);
+      this.artworks = artworks.filter((artwork) => {
+        artwork.imageUrl = null;
+        
+        const show =  !artwork.hide && artwork.id;
+        if(show) {
+          this.portfolioService.getArtworkImage(artwork).subscribe((imageUrl) => {
+            artwork.imageUrl = imageUrl;
+            this.detectChangesRef.detectChanges();
+          }, () => {});;
+        }
+       
+        return show;
+      });
       this.selectedArtwork =  this.artworks.length > 0 ? this.artworks[0] : null;
       this.detectChangesRef.detectChanges();
     });
-  }
-
-  public ngAfterViewInit(): void {
     this.detectChangesRef.detectChanges();
   }
 

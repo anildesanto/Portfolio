@@ -23,7 +23,7 @@ export class AboutComponent implements OnDestroy {
   private typing: Subject<number> = new Subject;
   private typingSub: Subscription;
   private readonly TYPING_SPEED = {
-    '.' : 1000,
+    '.' : 800,
     '-' : 600,
     ',' : 300,
     start: 1000,

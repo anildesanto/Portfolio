@@ -7,6 +7,7 @@ import { Artwork } from '../models/artwork';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Router } from '@angular/router';
 import { Audio } from '../models/audio';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -59,7 +60,7 @@ export class PortfolioService {
   public getProjectsStorageImages(project: Project): any {
     return this.storage.storage.ref('Projects').child(project.id).child('images').listAll().then( val => {
       project.images = Array<string>();
-      val.items.forEach((element: firebase.storage.Reference) => {
+      val.items.forEach((element: firebase.default.storage.Reference) => {
         element.getDownloadURL().then((imageUrl) => {
           project.images[project.images.length] = imageUrl;
         });
@@ -77,6 +78,10 @@ export class PortfolioService {
     return this.storage.ref(`Projects/${project.id}/${project.id}_demo_video.mp4`).getDownloadURL().subscribe((videoUrl) => {
       project.videoUrl = videoUrl;
     }, () => {});
+  }
+
+  public getArtworkImage(artwork: Artwork): Observable<any> {
+    return this.storage.ref(`Artwork/${artwork.id}.jpg`).getDownloadURL();
   }
 
   // handle error

@@ -3,4 +3,5 @@ export class Artwork {
   imageUrl: string;
   coloured: boolean;
   hide: boolean;
+  id: boolean;
 }

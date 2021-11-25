@@ -37,10 +37,14 @@
 }
 .artwork-container {
   display: flex;
-  height: 100%;
   flex-direction: column;
   flex-wrap: wrap;
   position: relative;
+  width: 0%;
+  height: 0%;
+
+  // animate
+  @include animate(expand-anim, .5s, .2s, 1, ease);
 }
 
 .artwork-controller {
