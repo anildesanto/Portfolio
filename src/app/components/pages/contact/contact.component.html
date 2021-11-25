@@ -1,5 +1,5 @@
 <div>
-  <div class="card secondary">anilde.santo@hotmail.com</div>
+  <div class="card secondary">For any queries, please contact me using the form below.</div>
   <div class="divider medium"></div>
   <div class="card">
     <form [formGroup]="contactForm">
@@ -25,6 +25,7 @@
 
       <button type="submit" (click)="sendMessage()">Send</button>
       <div class="divider medium"></div>
+      <p>{{formSubmissionMessage}}</p>
     </form>
   </div>
 </div>

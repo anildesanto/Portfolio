@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { Helper } from './utils/helper';
 import { ElementQueries } from 'css-element-queries';
-import { User } from './models/user';
 import { PortfolioService } from './services/portfolio.service';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 @Component({
@@ -10,17 +9,8 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  private token: string;
-  
   constructor(public helper: Helper, public portfolioService: PortfolioService, private recaptchaV3Service: ReCaptchaV3Service) {
     ElementQueries.init();
     this.portfolioService.getUser().valueChanges().subscribe((userData) => this.portfolioService.user = userData);
-  }
-
-  public executeRecaptcha(action: string): void {
-    this.recaptchaV3Service.execute(action)
-    .subscribe((token: string) => {
-      this.token = token;
-    });
   }
 }

@@ -11,7 +11,14 @@
 
 .caret {
   @include animate(blink, 1s, 0s, infinite, step-end);
-  border-left: 4px solid $secondaryAccent;
+  border-right: 2px solid $secondaryAccent;
+  
+  &.underscore {
+    border-right: none;
+    border-bottom: 2px solid $secondaryAccent;
+    display: inline-flex;
+    width: 12px;
+  }
 }
 
 .languages {

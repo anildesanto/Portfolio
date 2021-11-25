@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "my-portfolio-c2727"
+  },
+  "targets": {
+    "my-portfolio-c2727": {
+      "hosting": {
+        "portfolio": [
+          "anilde-santo"
+        ]
+      }
+    }
   }
 }
