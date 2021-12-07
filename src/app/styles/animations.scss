@@ -50,4 +50,28 @@
 @keyframes blink {
     from, to { border-color: transparent }
     50% { border-color: $secondaryAccent }
-  }
+}
+
+@keyframes moveRight {
+    0% {
+      left: 0;
+    }
+    50% {
+      left: 30%;
+    }
+    100% {
+      left: 0;    
+    }
+}
+  
+@keyframes moveLeft {
+    0% {
+        right: 0;
+    }
+    50% {
+        right: 30%;
+    }
+    100% {
+        right: 0;    
+    }
+}

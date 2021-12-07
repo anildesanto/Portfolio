@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { fromEvent, Subject, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { PortfolioService } from 'src/app/services/portfolio.service';
 
@@ -13,6 +13,16 @@ export class AboutComponent implements OnDestroy {
     if(elementRef) {
       this.portfolioService.getSingleAudio('keyboard').valueChanges().subscribe((audio) => {
         this.audio = new Audio(audio.url);
+        this.audio.autoplay = true;
+        this.audio.volume = 0.2;
+        this.onWindowBlurSub = fromEvent(window, 'blur').subscribe(_ => {
+          this.stopTyping(true);
+        });
+
+        this.onWindowFocusSub = fromEvent(window, 'focus').subscribe(_ => {
+          this.startTyping(elementRef.nativeElement.firstChild, false, this.TYPING_SPEED.start);
+        })
+        
         this.startTyping(elementRef.nativeElement.firstChild, false, this.TYPING_SPEED.start);
       });
 
@@ -22,11 +32,13 @@ export class AboutComponent implements OnDestroy {
   private audio: HTMLAudioElement;
   private typing: Subject<number> = new Subject;
   private typingSub: Subscription;
+  private onWindowBlurSub: Subscription;
+  private onWindowFocusSub: Subscription;
   private readonly TYPING_SPEED = {
     '.' : 800,
     '-' : 600,
     ',' : 300,
-    start: 1000,
+    start: 100,
     default: 32
   }
 
@@ -34,6 +46,7 @@ export class AboutComponent implements OnDestroy {
 
   public ngOnDestroy(): void {
     this.stopTyping(true);
+    this.stopWindowFocusTracking();
   }
 
   private typewriter(element: HTMLParagraphElement, text: string): void {
@@ -48,6 +61,7 @@ export class AboutComponent implements OnDestroy {
       this.startTyping(element, !!this.TYPING_SPEED[letterToAdd], this.TYPING_SPEED[letterToAdd]);
     } else {
       this.stopTyping(true);
+      this.stopWindowFocusTracking();
     }
   }
 
@@ -71,5 +85,16 @@ export class AboutComponent implements OnDestroy {
         this.audio.remove();
       }
     }
+  }
+
+  private stopWindowFocusTracking(): void {
+    if(this.onWindowBlurSub) {
+      this.onWindowBlurSub.unsubscribe()
+    }
+
+    if(this.onWindowFocusSub) {
+      this.onWindowFocusSub.unsubscribe();
+    }
+
   }
 }

@@ -8,7 +8,7 @@ import { ResizeSensor } from 'css-element-queries';
   templateUrl: './selection-indicator.component.html',
   styleUrls: ['./selection-indicator.component.scss']
 })
-export class SelectionIndicatorComponent implements AfterViewInit, OnDestroy, OnChanges {
+export class SelectionIndicatorComponent implements OnDestroy, OnChanges {
 
   @Input() target: HTMLElement;
   @ViewChild('indicator') indicatorRef: ElementRef;
@@ -16,11 +16,6 @@ export class SelectionIndicatorComponent implements AfterViewInit, OnDestroy, On
   private pixelsSuffix = 'px';
 
 // FIXME -- Check move to position calculation
-  public ngAfterViewInit(): void {
-    this.targetSub = new ResizeSensor(this.target, _ => {
-      this.moveAnResize();
-    });
-  }
   public ngOnChanges(): void {
     this.moveAnResize();
   }
@@ -34,6 +29,10 @@ export class SelectionIndicatorComponent implements AfterViewInit, OnDestroy, On
   private moveAnResize(): void {
     if (!this.target || !this.element) {
       return;
+    } else if(!this.targetSub) {
+      this.targetSub = new ResizeSensor(this.target, _ => {
+        this.moveAnResize();
+      });
     }
 
     this.element.style.width = `${this.target.getBoundingClientRect().width}${this.pixelsSuffix}`;

@@ -25,7 +25,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ErrorDirective } from './directives/error.directive';
 import { ErrorComponent } from './components/pages/error/error.component';
 import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
-import { EmailService } from './services/email/email.service';
+import { ContactService } from './services/contact/contact.service';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
@@ -58,7 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     Helper,
-    EmailService,
+    ContactService,
     {
       provide: RECAPTCHA_V3_SITE_KEY,
       useValue: environment.recaptcha.siteKey,

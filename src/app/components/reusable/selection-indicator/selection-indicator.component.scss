@@ -6,6 +6,7 @@ transition: all 0.3s ease-in-out;
 position: absolute;
 width: 120px;
 height: $extra-small-spacing;
+z-index: 3;
   .view {
     position: absolute;
     left: 1px;

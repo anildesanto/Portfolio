@@ -10,7 +10,7 @@ import { SelectionIndicatorComponent } from '../selection-indicator/selection-in
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnDestroy {
+export class HeaderComponent implements AfterViewInit, OnDestroy {
   @ViewChild('indicator') indicator: SelectionIndicatorComponent;
   @Input() sections: Array<Section> =  new Array<Section>();
   @Output() selectionChange: EventEmitter<Section> = new EventEmitter<Section>();
@@ -19,6 +19,9 @@ export class HeaderComponent implements OnDestroy {
 
 
   constructor(private router: Router, private changeDetectorRef: ChangeDetectorRef) { }
+  public ngAfterViewInit(): void {
+    this.changeDetectorRef.detectChanges();
+  }
 
   public ngOnDestroy(): void {
     this.subscriptions.unsubscribe();

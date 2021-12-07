@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { EmailService } from 'src/app/services/email/email.service';
+import { ContactService } from 'src/app/services/contact/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +8,7 @@ import { EmailService } from 'src/app/services/email/email.service';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
-  constructor(private formBuilder: FormBuilder, private emailService: EmailService) { }
+  constructor(private formBuilder: FormBuilder, private contactService: ContactService) { }
   // TODO -- add mail API
   // TODO -- add recaptcha
   public formSubmissionMessage = '';
@@ -41,7 +41,7 @@ export class ContactComponent {
   sendMessage() {
     if(this.contactForm.valid) {
       this.formSubmissionMessage = 'Processing your email, please wait...'
-      this.emailService.sendEmail({message: this.contactForm.value}).subscribe((val) => {
+      this.contactService.sendMessage(this.contactForm.value).subscribe((val) => {
         // on success
         console.log(val);
         this.formSubmissionMessage = 'Message sent sucessfully!'
