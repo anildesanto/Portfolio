@@ -27,6 +27,8 @@ import { ErrorComponent } from './components/pages/error/error.component';
 import { RecaptchaV3Module, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 import { ContactService } from './services/contact/contact.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatComponent } from './components/reusable/chat/chat.component';
+import { MessageComponent } from './components/reusable/chat/message/message.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +44,9 @@ import { HttpClientModule } from '@angular/common/http';
     ProjectDetailsComponent,
     SelectionIndicatorComponent,
     ErrorDirective,
-    ErrorComponent
+    ErrorComponent,
+    ChatComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,

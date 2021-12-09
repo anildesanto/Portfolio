@@ -29,6 +29,14 @@ body {
   user-select: none;
 }
 
+.show {
+  visibility: visible;
+}
+
+.hide {
+  visibility: hidden;
+}
+
 a {
   color: $secondaryAccent;
   &.selected, &:hover, &:focus{
@@ -168,6 +176,14 @@ a {
   }
 }
 
+.hide-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 
 .tools-container {
   width: 100%;
@@ -273,14 +289,16 @@ img {
 }
 
 input, textarea {
+  box-sizing: border-box;
   padding: $small-spacing;
   border-radius: $small-spacing;
   border: 1px solid #5656569e;
-  width: 50%;
+  width: 100%;
   margin: auto;
   background: $secondaryCard;
   min-width: 50%;
   color: $primaryText;
+  resize: none;
 
   &.ng-invalid.ng-touched {
     border-color: $primaryAccent;
@@ -288,32 +306,39 @@ input, textarea {
 
   &.ng-invalid.ng-touched + .error-text {
     display: block;
-    // visibility: visible;
     transition: all 0.5s ease-in;
+    position: absolute;
+    font-size: 12px;
   }
 }
 
 textarea {
-  height: 150px;
-  width: 92%;
-  max-width: 92%;
   max-height: 300px;
-  min-height: 50px;
+  &:focus-visible {
+    outline: none;
+    border-color: $white;
+  }
 }
 
 button {
   padding: $small-spacing;
   width: 100px;
-  border-radius: $large-spacing;
-  background-color: $primaryText;
-  color: $black;
-  border: 2px solid $white;
+  background-color: $primaryAccent;
+  color: $secondaryText;
+  border: none;
+  border-radius: 8px;
 
-  &:hover, &:focus {
+  &:hover {
     color: $white;
     background-color: gray;
     outline: none;
   }
+}
+
+.disabled {
+  background: $primaryCard; 
+  border: none;
+  transition: all .2s ease;
 }
 
 .grid-layout {
@@ -389,10 +414,6 @@ button {
 
   .content {
     height: 100%;
-  }
-
-  input, textarea {
-    width: 92%;
   }
   .footer {
     width: 18px;

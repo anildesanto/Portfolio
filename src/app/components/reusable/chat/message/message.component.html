@@ -1,0 +1,8 @@
+<div class="message">
+    <span *ngIf="!isSameUser" class="user-name" [class]="isCurrentUser ? 'right' : 'left'">{{isCurrentUser ? "You" :
+        senderName}}</span>
+    <div class="message-container" [class]="isCurrentUser ? 'right current-user' : 'left'">
+        <span class="message" [class]="isCurrentUser ? 'right' : 'left'">{{getMessage()}}</span>
+    </div>
+    <span class="time" [class]="isCurrentUser ? 'right' : 'left'">{{getTime()}}</span>
+</div>

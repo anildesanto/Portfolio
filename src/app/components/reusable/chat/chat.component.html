@@ -1,0 +1,24 @@
+<div class="chat-container">
+  <div class="chat" #chat>
+    <div *ngFor="let message of messages; let i = index">
+      <app-message [isCurrentUser]="isCurrentUser(message)" [isSameUser]="isSameUser(message, i)" [message]="message">
+      </app-message>
+    </div>
+    <div [class]="typing ? 'show' : 'hide'" class="typing-indicator">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="divider medium"></div>
+  <form class="chat-form" [formGroup]="chatForm" [style]="'flex-basis:'+(currentChatBoxHeight+150)+'px'">
+    <div class="chat-text">
+      <textarea [class]="sendButtonEnabled ? '' : 'disabled'" [style]="'height:'+currentChatBoxHeight+'px'" #chatInput
+        type="text" id="text" formControlName="text" [appError]="errorMessages"></textarea>
+      <div class="divider small"></div>
+    </div>
+    <div class="chat-send-button">
+      <button [class]="sendButtonEnabled ? '' : 'disabled'" type="submit" (click)="sendMessage()">Send</button>
+    </div>
+  </form>
+</div>

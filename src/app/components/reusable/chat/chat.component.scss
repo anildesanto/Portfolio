@@ -1,0 +1,81 @@
+@import "src/app/styles/variables.scss";
+@import "src/app/styles/animations.scss";
+@import "src/styles.scss";
+
+.chat-container {
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+
+    .chat {
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      @extend .hide-scrollbar;
+
+      background-color: $primaryCard;
+      border-radius: 12px;
+      padding: 10px;
+    }
+    .chat-form {
+      overflow-x: hidden; 
+      overflow-y: auto;
+      position: relative;
+      flex: 0 1 250px;
+      transition: all 0.1s ease-in-out;
+    
+      @extend .hide-scrollbar;
+     
+      .chat-text {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: contents;
+        textarea {
+          overflow-x: hidden;
+          overflow-y: auto;
+          @extend .custom-scrollbar;
+        }
+        
+      }
+      .chat-send-button {
+        float: right;
+      }
+    }
+}
+  .typing-indicator {
+    width: 100px;
+    height: 30px;
+    background:  $secondaryCard;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clear: both;
+    transition: all .05s ease;
+
+    * {
+      width: 10px;
+      height: 10px;
+      background:  $secondaryAccent;
+      border-radius: 50%;
+      margin: 5px;
+    }
+  
+    :first-child {
+      @include animate(typing, .5s, .5s, infinite, ease, all);
+    }
+  
+    :nth-of-type(2) {
+      @include animate(typing, .5s, .1s, infinite, ease, all);
+    }
+  
+    :last-child {
+      @include animate(typing, .5s, .3s, infinite, ease, all);
+    }
+  }
+  
